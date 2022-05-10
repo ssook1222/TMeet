@@ -1,0 +1,13 @@
+.back{
+    background-color: #F4FDFD;
+    width: 100%;
+    height: 1024px;
+}
+
+.loginCard{
+    padding-top: 50px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
