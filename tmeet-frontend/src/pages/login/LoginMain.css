@@ -1,11 +1,19 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+}
 .back{
     background-color: #F4FDFD;
     width: 100%;
-    height: 1024px;
+    height: 100vh;
+    background-size: cover;
 }
-
+.test{
+    background-color: black;
+    width: 100%;
+    height: 10vh;
+    margin-bottom: 10vh;
+}
 .loginCard{
-    padding-top: 50px;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
