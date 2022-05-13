@@ -8,7 +8,7 @@ app.get('/api/hello', (req, res) => {
 })
 
 createConnection().then(connection => {
-    app.listen(8080, () => {
-        console.log('server is listening 8080');
+    app.listen(5000, () => {
+        console.log('server is listening 5000');
     });
 });
