@@ -112,7 +112,7 @@ const NavBar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        TMeet
                     </Typography>
                     <div style={{ flexGrow: 16, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
                     <div style={{ flexGrow: 8, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
