@@ -47,6 +47,8 @@ function Login() {
                         sx={{ mt: 3, mb: 2 }}
                     ><b>로그인</b></Button>
                     <h4 style={{marginLeft:"auto", marginRight:"auto", color:"#656262", fontFamily: 'Noto Sans KR'}}>혹은 SNS로 로그인하기</h4>
+                    <img className="login" style={{marginRight:"30px"}} src="img/kakao-talk.png"></img>
+                    <img className="login" src="img/google.png"></img>
                 </Card>
             </body>
         </div>

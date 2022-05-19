@@ -29,3 +29,8 @@
     text-align: center;
     border: 0.5px solid #71C9CE !important;
 }
+
+.login{
+    width : 3vw;
+    margin-bottom: 30px;
+}
