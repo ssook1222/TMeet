@@ -1,14 +1,23 @@
 *{
     font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 100;
+}
+.form{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+.logo{
+    margin-top: 30px;
 }
 .back{
     background-color: #F4FDFD;
     width: 100%;
     height: 100vh;
-    background-size: cover;
 }
-.test{
-    background-color: black;
+.top{
+    background-color: #F4FDFD;
     width: 100%;
     height: 10vh;
     margin-bottom: 10vh;
@@ -18,4 +27,10 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    border: 0.5px solid #71C9CE !important;
+}
+
+.login{
+    width : 3vw;
+    margin-bottom: 30px;
 }
