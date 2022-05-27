@@ -2,57 +2,113 @@ import React from 'react';
 import './LoginMain.css';
 import {Card, TextField} from '@mui/material';
 import Button from "@mui/material/Button";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import * as yup from "yup";
+import {useFormik} from "formik";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
 
+const theme = createTheme();
+
+const validationSchema = yup.object({
+    email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
+    password: yup
+        .string('Enter your password')
+        .min(8, 'Password should be of minimum 8 characters length')
+        .required('Password is required'),
+});
 
 function Login() {
-    return (
-        <div>
-            <body className="back">
-                <div className="top"></div>
-                <Card className="loginCard" variant="outlined">
-                    <img className="logo" src="img/time.png"></img>
-                    <h3 style={{color:"#656262"}}>티밋을 사용하시려면 로그인이 필요합니다.</h3>
-                    <div className="form">
-                        <TextField
-                            margin="normal"
-                            variant="filled"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            margin="normal"
-                            variant="filled"
-                            inputProps={{ inputMode: 'numeric', pattern: '[0-9]*'}}
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                    </div>
-                    <hr style={{color:"#656262",width:"80%", marginLeft:"auto", marginRight:"auto", marginBottom:"10px"}}/>
-                    <Button
-                        type="submit"
-                        style={{backgroundColor:"#acdede", boxShadow: "none",
-                            fontFamily: 'Noto Sans KR', fontWeight:"100",
-                            width:"70%"}}
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                    ><b>로그인</b></Button>
-                    <h4 style={{marginLeft:"auto", marginRight:"auto", color:"#656262", fontFamily: 'Noto Sans KR'}}>혹은 SNS로 로그인하기</h4>
-                    <img className="login" style={{marginRight:"30px"}} src="img/kakao-talk.png"></img>
-                    <img className="login" src="img/google.png"></img>
-                </Card>
-            </body>
-        </div>
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        validationSchema: validationSchema,
+        onSubmit: (values) => {
+            console.log(JSON.stringify(values, null, 2));
+        },
+    });
 
+    return (
+        <div style={{backgroundColor:"#F4FDFD",
+            width: "100%",
+            height: "100vh"}}>
+            <ThemeProvider theme={theme}>
+                <Container component="main" maxWidth="xs" style={{backgroundColor:"white"}}>
+                    <CssBaseline />
+                    <Box
+                        sx={{
+                            marginTop: 8,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+                            <img sx={{ m: 1 }}
+                                 src="img/time.png"></img>
+                        <Typography component="h1" variant="h5">
+                            Sign in
+                        </Typography>
+                        <Box component="form"
+                             onSubmit={formik.handleSubmit}
+                             noValidate sx={{ mt: 1 }}
+                        >
+                            <TextField
+                                margin="normal"
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="email"
+                                autoComplete="email"
+                                autoFocus
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                                error={formik.touched.email && Boolean(formik.errors.email)}
+                                helperText={formik.touched.email && formik.errors.email}
+                            />
+                            <TextField
+                                margin="normal"
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                                value={formik.values.password}
+                                onChange={formik.handleChange}
+                                error={formik.touched.password && Boolean(formik.errors.password)}
+                                helperText={formik.touched.password && formik.errors.password}
+                            />
+                            <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+                            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                                Sign In
+                            </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="#" variant="body2">
+                                        Forgot password?
+                                    </Link>
+                                </Grid>
+                                <Grid item>
+                                    <Link href="#" variant="body2">
+                                        {"Don't have an account? Sign Up"}
+                                    </Link>
+                                </Grid>
+                            </Grid>
+                        </Box>
+                    </Box>
+                </Container>
+            </ThemeProvider>
+        </div>
     );
 }
 
