@@ -8,8 +8,6 @@ import {useFormik} from "formik";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -43,72 +41,71 @@ function Login() {
             width: "100%",
             height: "100vh"}}>
             <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs" style={{
+                <Container component="main" maxWidth="lg" style={{
                     display:'flex',
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                    backgroundColor:"white"}}>
-                    <CssBaseline />
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center'
-                        }}
-                    >
-                            <img sx={{ m: 1 }}
-                                 src="img/time.png"></img>
-                        <Typography component="h1" variant="h5">
-                            Sign in
-                        </Typography>
-                        <Box component="form"
-                             onSubmit={formik.handleSubmit}
-                             noValidate sx={{ mt: 1 }}
+                    height:'100%',
+                    alignItems: 'center'}}>
+                    <Container component="main" maxWidth="sm" style={{
+                        backgroundColor:"white"}}>
+                        <CssBaseline />
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center'
+                            }}
                         >
-                            <TextField
-                                margin="normal"
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                                autoFocus
-                                value={formik.values.email}
-                                onChange={formik.handleChange}
-                                error={formik.touched.email && Boolean(formik.errors.email)}
-                                helperText={formik.touched.email && formik.errors.email}
-                            />
-                            <TextField
-                                margin="normal"
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                value={formik.values.password}
-                                onChange={formik.handleChange}
-                                error={formik.touched.password && Boolean(formik.errors.password)}
-                                helperText={formik.touched.password && formik.errors.password}
-                            />
-                            <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-                            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                                Sign In
-                            </Button>
-                            <Grid container>
-                                <Grid item xs>
-                                    <Link href="#" variant="body2">
-                                        Forgot password?
-                                    </Link>
+                            <img sx={{ m: 1 }}
+                                 style={{marginBottom:"10px"}}
+                                 src="img/time.png"></img>
+                            <Typography component="h6" variant="h6"
+                                        style={{color:"#555555"}}>
+                                Tmeet을 사용하시려면 로그인이 필요합니다.
+                            </Typography>
+                            <Box component="form"
+                                 onSubmit={formik.handleSubmit}
+                                 noValidate sx={{ mt: 1 }}
+                            >
+                                <TextField
+                                    margin="normal"
+                                    fullWidth
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    autoComplete="email"
+                                    autoFocus
+                                    value={formik.values.email}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.email && Boolean(formik.errors.email)}
+                                    helperText={formik.touched.email && formik.errors.email}
+                                />
+                                <TextField
+                                    margin="normal"
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    id="password"
+                                    autoComplete="current-password"
+                                    value={formik.values.password}
+                                    onChange={formik.handleChange}
+                                    error={formik.touched.password && Boolean(formik.errors.password)}
+                                    helperText={formik.touched.password && formik.errors.password}
+                                />
+                                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                                    Sign In
+                                </Button>
+                                <hr/>
+                                <Grid container>
+                                    <Grid item>
+                                        <Link href="#" variant="body2">
+                                            {"Don't have an account? Sign Up"}
+                                        </Link>
+                                    </Grid>
                                 </Grid>
-                                <Grid item>
-                                    <Link href="#" variant="body2">
-                                        {"Don't have an account? Sign Up"}
-                                    </Link>
-                                </Grid>
-                            </Grid>
+                            </Box>
                         </Box>
-                    </Box>
+                    </Container>
                 </Container>
             </ThemeProvider>
         </div>
