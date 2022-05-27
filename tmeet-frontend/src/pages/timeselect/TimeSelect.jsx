@@ -38,8 +38,11 @@ function TimeSelect() {
 }
 
 function toggleClick(e) {
-  if (e.target.style.backgroundColor != '#71C9CE') e.target.style.backgroundColor = '#71C9CE';
-  else e.target.style.backgroundColor = 'white';
+  if (e.target.style.backgroundColor !== 'rgb(113, 201, 206)')
+    e.target.style.backgroundColor = '#71c9ce';
+
+  else if((e.target.style.backgroundColor === 'rgb(113, 201, 206)') )
+    e.target.style.backgroundColor = 'white';
 }
 
 export default TimeSelect;

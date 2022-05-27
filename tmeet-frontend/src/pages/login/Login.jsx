@@ -43,14 +43,17 @@ function Login() {
             width: "100%",
             height: "100vh"}}>
             <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs" style={{backgroundColor:"white"}}>
+                <Container component="main" maxWidth="xs" style={{
+                    display:'flex',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    backgroundColor:"white"}}>
                     <CssBaseline />
                     <Box
                         sx={{
-                            marginTop: 8,
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'center',
+                            alignItems: 'center'
                         }}
                     >
                             <img sx={{ m: 1 }}
