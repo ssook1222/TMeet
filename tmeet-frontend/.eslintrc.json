@@ -2,7 +2,7 @@
   "extends": ["react-app", "prettier"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "react/jsx-filename-extension": 0
   }
 }

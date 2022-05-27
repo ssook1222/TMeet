@@ -4,7 +4,8 @@ import Main from './pages/main/Main';
 import Login from './pages/login/Login';
 import LoginSample from './pages/sample/LoginSample';
 import TimeSample from './pages/sample/TimeSample';
-import Time from './pages/time/Time'
+import Time from './pages/time/Time';
+import TimeSelect from './pages/timeselect/TimeSelect';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/sample/login" element={<LoginSample />}></Route>
           <Route exact path="/sample/time" element={<TimeSample />}></Route>
           <Route exact path="/time" element={<Time />}></Route>
+          <Route exact path="/timeselect" element={<TimeSelect />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
