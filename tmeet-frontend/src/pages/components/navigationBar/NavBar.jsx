@@ -114,9 +114,9 @@ const NavBar = () => {
                     >
                         TMeet
                     </Typography>
-                    <div style={{ flexGrow: 16, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
-                    <div style={{ flexGrow: 8, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}>
+                    <div style={{ flexGrow: 2, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
+                    <div style={{ flexGrow: 2, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
+                    <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, marginleft:0}}>
                         {pages.map((page) => (
                             <Button
                                 key={page}
