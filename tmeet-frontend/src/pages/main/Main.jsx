@@ -5,7 +5,7 @@ function App() {
     return (
         <div className="App">
             <NavBar></NavBar>
-            <h1>Hello World</h1>
+            <h1>Tmeet? Team it!</h1>
         </div>
     );
 }
