@@ -1,6 +1,6 @@
 import React from 'react';
 import './LoginMain.css';
-import {Card, TextField} from '@mui/material';
+import {TextField} from '@mui/material';
 import Button from "@mui/material/Button";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import * as yup from "yup";
@@ -13,8 +13,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
+import {Image} from "@mui/icons-material";
 
-const theme = createTheme();
+const theme = createTheme({
+    status: {
+        bt_back: '#F4FDFD'
+    }
+});
 
 const validationSchema = yup.object({
     email: yup.string('Enter your email').email('Enter a valid email').required('Email is required'),
@@ -92,17 +97,54 @@ function Login() {
                                     error={formik.touched.password && Boolean(formik.errors.password)}
                                     helperText={formik.touched.password && formik.errors.password}
                                 />
-                                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                                    Sign In
+                                <Button type="submit"
+                                        style={{
+                                            backgroundColor:"#a7d4d4",
+                                            boxShadow:"none"
+                                        }}
+                                        fullWidth variant="contained"
+                                        sx={{ mt: 3, mb: 2 }}>
+                                    <b>Sign In</b>
                                 </Button>
                                 <hr/>
-                                <Grid container>
-                                    <Grid item>
-                                        <Link href="#" variant="body2">
-                                            {"Don't have an account? Sign Up"}
-                                        </Link>
-                                    </Grid>
-                                </Grid>
+                                <h4 style={{color:"#656262", textAlign: "center"}}>혹은 SNS로 로그인하기</h4>
+
+                                <div style={{display:"block", margin:"auto", width:"50%"}}>
+                                    <Button
+                                        style={{
+                                            width:"50%",
+                                            display:"inline-block",
+                                            margin:"auto"}}
+                                    >
+                                        <img
+                                            style={{width:"3vw"}}
+                                            src={"img/google.png"}></img>
+                                    </Button>
+                                    <Button
+                                        style={{
+                                            width:"50%",
+                                            display:"inline-block",
+                                            margin:"auto"}}
+                                    >
+                                        <img
+                                            style={{width:"3vw"}}
+                                            src={"img/kakao-talk.png"}></img>
+                                </Button>
+                                </div>
+
+                                <h5 style={{textAlign:"center",
+                                    marginTop:"5px",
+                                    marginBottom:"2px"
+                                }}>계정이 없으신가요?</h5>
+                                <Link href="#"
+                                      style={{display:"inline-block",
+                                          textAlign:"center",
+                                          width:"100%",
+                                          marginBottom:"5px"
+                                        }}
+                                      variant="body2">
+                                    {"회원가입"}
+                                </Link>
                             </Box>
                         </Box>
                     </Container>
