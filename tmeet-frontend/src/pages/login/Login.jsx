@@ -9,11 +9,8 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
-import {Image} from "@mui/icons-material";
+import {KAKAO_AUTH_URL} from "./Oauth/Oauth";
 
 const theme = createTheme({
     status: {
@@ -121,6 +118,7 @@ function Login() {
                                             src={"img/google.png"}></img>
                                     </Button>
                                     <Button
+                                        href={KAKAO_AUTH_URL}
                                         style={{
                                             width:"50%",
                                             display:"inline-block",
