@@ -10,7 +10,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import {KAKAO_AUTH_URL} from "./Oauth/Oauth";
+import {KAKAO_AUTH_URL} from "./KakaoLogin/KakaoOauth/Oauth";
 
 const theme = createTheme({
     status: {
@@ -108,13 +108,14 @@ function Login() {
 
                                 <div style={{display:"block", margin:"auto", width:"50%"}}>
                                     <Button
+                                        href={"/google-login"}
                                         style={{
                                             width:"50%",
                                             display:"inline-block",
                                             margin:"auto"}}
                                     >
                                         <img
-                                            style={{width:"3vw"}}
+                                            style={{width:"3vw", display:"block", margin:"auto"}}
                                             src={"img/google.png"}></img>
                                     </Button>
                                     <Button
@@ -125,7 +126,7 @@ function Login() {
                                             margin:"auto"}}
                                     >
                                         <img
-                                            style={{width:"3vw"}}
+                                            style={{width:"3vw", display:"block", margin:"auto"}}
                                             src={"img/kakao-talk.png"}></img>
                                 </Button>
                                 </div>
