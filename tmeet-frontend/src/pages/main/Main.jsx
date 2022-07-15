@@ -14,9 +14,14 @@ function App() {
                        Team IT ?  T Meet !
                        <h6>모임을 정하는 가장 쉬운 방법</h6>
                    </div>
-                   <div className= "meeting">
-                       <img src="img/meeting.png"></img>
-                   </div>
+                   {/*<div className= "meeting">*/}
+                   {/*    <img src="img/meeting.png"></img>*/}
+                   {/*</div>*/}
+               <div className= "meeting">
+                   <img sx={{ m: 1 }}
+                        style={{marginBottom:"10px"}}
+                        src="img/meeting.png"></img>
+               </div>
            </div>
 
         </body>
