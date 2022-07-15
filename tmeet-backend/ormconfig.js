@@ -2,10 +2,10 @@ const SnakeNamingStrategy = require("typeorm-naming-strategies").SnakeNamingStra
 
 module.exports = {
   "type": "mysql",
-  "host": "localhost",
+  "host": "tmeet-server.mariadb.database.azure.com",
   "port": 3306,
-  "username": "onebbu",
-  "password": "040805",
+  "username": "tmeet_admin@tmeet-server",
+  "password": "P@ssw0rd",
   "database": "tmeetdb",
   "synchronize": true,
   "logging": false,

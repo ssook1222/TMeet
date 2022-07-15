@@ -1,0 +1,16 @@
+button{
+    background-color: white;
+}
+
+.select{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.regularly{
+    margin: 30% auto;
+}
+
+.not{
+    margin: 30% auto;
+}
