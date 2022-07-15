@@ -5,6 +5,7 @@ import Login from './pages/login/Login';
 import LoginSample from './pages/sample/LoginSample';
 import TimeSample from './pages/sample/TimeSample';
 import Time from './pages/time/Time'
+// import Clock from './pages/components/clock/Clock';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/sample/login" element={<LoginSample />}></Route>
           <Route exact path="/sample/time" element={<TimeSample />}></Route>
-          <Route exact path="/time" element={<Time />}></Route>
+          {/*<Route exact path="/Clock" element={<Clock />}></Route>*/}
         </Route>
       </Routes>
     </BrowserRouter>
