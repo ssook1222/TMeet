@@ -8,21 +8,10 @@ import Checkbox from '@mui/material/Checkbox';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NavBar from "../components/navigationBar/NavBar";
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © Tmeet '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 const theme = createTheme(
     {
@@ -57,11 +46,16 @@ export default function SignUp() {
                         marginTop: 8,
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        border: 'solid 1px #46B3B9',
+                        borderRadius: '10px',
+                        marginBottom: '30px'
                     }}
                 >
                     <img sx={{ m: 1 }}
-                         style={{marginBottom:"10px"}}
+                         style={{
+                             marginTop:"30px"
+                         }}
                          src="img/time.png"></img>
                     <Box component="form" noValidate onSubmit={handleSubmit}
                          sx={{
@@ -148,12 +142,17 @@ export default function SignUp() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            style={{
+                                backgroundColor:"#a7d4d4",
+                                boxShadow:"none",
+                                borderRadius:"5px",
+                                marginBottom:"30px"
+                            }}
                         >
                             Sign Up
                         </Button>
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 5 }} />
             </Container>
         </ThemeProvider>
         </div>
