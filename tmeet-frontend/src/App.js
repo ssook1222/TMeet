@@ -6,6 +6,7 @@ import LoginSample from './pages/sample/LoginSample';
 import TimeSample from './pages/sample/TimeSample';
 import Time from './pages/time/Time';
 import TimeSelect from './pages/timeselect/TimeSelect';
+import TimeResult from './pages/timeresult/TimeResult';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/sample/time" element={<TimeSample />}></Route>
           <Route exact path="/time" element={<Time />}></Route>
           <Route exact path="/timeselect" element={<TimeSelect />}></Route>
+          <Route exact path="/timeresult" element={<TimeResult />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
