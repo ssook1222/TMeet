@@ -1,11 +1,11 @@
 import express from 'express';
 import {createConnection} from "typeorm";
+import router from './router';
 
 const app = express();
 
-app.get('/api/hello', (req, res) => {
-    res.send('hello world');
-})
+app.use(express.json());
+app.use('/api', router);
 
 createConnection().then(connection => {
     app.listen(5000, () => {
