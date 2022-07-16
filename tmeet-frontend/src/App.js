@@ -25,7 +25,6 @@ function App() {
           <Route exact path="/timeselect" element={<TimeSelect />}></Route>
           <Route exact path="/kakao-redirect" element={<KakaoRedirectTest />}></Route>
           <Route exact path="/google-login" element={<GoogleLogin />}></Route>
-
           <Route exact path="/sign-up" element={<SignUp />}></Route>
         </Route>
       </Routes>

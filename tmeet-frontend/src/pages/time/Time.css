@@ -1,45 +1,5 @@
-#content{
-    display: grid;
-    grid-template-columns: 5fr 5fr;
-    width: 100%;
-    height: 100%;
-}
-
-#input{
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-}
 
 .timeTable{
     display: block;
     margin: 0 auto;
 }
-
-.timeInterval{
-    display: inline-block;
-    width: 30px;
-}
-
-.time{
-    margin-bottom: 80%;
-}
-
-table{
-    display: inline-block;
-    padding-left: 0;
-}
-
-#result{
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
-}
-
-.buttons{
-    display: inline-block;
-    width: 80px;
-}
-
-button{
-    margin-top: 20px;
-}
-
