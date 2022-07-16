@@ -135,7 +135,7 @@ function Login() {
                                     marginTop:"5px",
                                     marginBottom:"2px"
                                 }}>계정이 없으신가요?</h5>
-                                <Link href="#"
+                                <Link href="/sign-up"
                                       style={{display:"inline-block",
                                           textAlign:"center",
                                           width:"100%",

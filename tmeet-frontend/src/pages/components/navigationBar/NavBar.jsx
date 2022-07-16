@@ -13,8 +13,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import {Link} from "@mui/material";
 
 const pages = ['회원가입', '시간정하기', '장소정하기', '모임확인'];
+const link =['/sign-up','/time','/','/'];
+const index = [0,1,2,3];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -88,7 +91,8 @@ const NavBar = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page}
+                                          onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -116,15 +120,18 @@ const NavBar = () => {
                     <div style={{ flexGrow: 2, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
                     <div style={{ flexGrow: 2, display: { xs: 'none', md: 'flex' }, marginLeft:'auto'}}></div>
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' }, marginleft:0}}>
-                        {pages.map((page) => (
+                        {
+                            pages.map((page, index) => (
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block', fontFamily: 'Noto Sans KR' }}
+                                href={link[index]}
                             >
                                 {page}
                             </Button>
-                        ))}
+                        ))
+                        }
                     </Box>
 
                     {/*<Box sx={{ flexGrow: 0 }}>*/}
