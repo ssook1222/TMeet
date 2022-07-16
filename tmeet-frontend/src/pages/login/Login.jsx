@@ -9,11 +9,8 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
-import {Image} from "@mui/icons-material";
+import {KAKAO_AUTH_URL} from "./KakaoLogin/KakaoOauth/Oauth";
 
 const theme = createTheme({
     status: {
@@ -111,23 +108,25 @@ function Login() {
 
                                 <div style={{display:"block", margin:"auto", width:"50%"}}>
                                     <Button
+                                        href={"/google-login"}
                                         style={{
                                             width:"50%",
                                             display:"inline-block",
                                             margin:"auto"}}
                                     >
                                         <img
-                                            style={{width:"3vw"}}
+                                            style={{width:"3vw", display:"block", margin:"auto"}}
                                             src={"img/google.png"}></img>
                                     </Button>
                                     <Button
+                                        href={KAKAO_AUTH_URL}
                                         style={{
                                             width:"50%",
                                             display:"inline-block",
                                             margin:"auto"}}
                                     >
                                         <img
-                                            style={{width:"3vw"}}
+                                            style={{width:"3vw", display:"block", margin:"auto"}}
                                             src={"img/kakao-talk.png"}></img>
                                 </Button>
                                 </div>
