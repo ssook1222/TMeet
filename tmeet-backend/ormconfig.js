@@ -8,7 +8,7 @@ module.exports = {
   "password": "P@ssw0rd",
   "database": "tmeetdb",
   "synchronize": true,
-  "logging": false,
+  "logging": true,
   "entities": [
     "src/entity/**/*.ts"
   ],

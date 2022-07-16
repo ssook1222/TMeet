@@ -15,8 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {Link} from "@mui/material";
 
-const pages = ['회원가입', '시간정하기', '장소정하기', '모임확인'];
-const link =['/sign-up','/time','/','/'];
+const pages = ['로그인', '시간정하기', '장소정하기', '모임확인'];
+const link =['/login','/time','/','/'];
 const index = [0,1,2,3];
 
 const NavBar = () => {
