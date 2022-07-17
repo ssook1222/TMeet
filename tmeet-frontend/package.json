@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
     "formik": "^2.2.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -41,6 +42,8 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:5000"
+  ,
   "devDependencies": {
     "eslint": "8.0.0"
   }
