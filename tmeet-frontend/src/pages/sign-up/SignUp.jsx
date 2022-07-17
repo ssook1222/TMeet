@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,7 +10,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NavBar from "../components/navigationBar/NavBar";
-
+import axios from "axios";
 
 const theme = createTheme(
     {
@@ -24,11 +23,29 @@ const theme = createTheme(
 export default function SignUp() {
     const handleSubmit = (event) => {
         event.preventDefault();
+
         const data = new FormData(event.currentTarget);
-        console.log({
+        let body = {
             email: data.get('email'),
             password: data.get('password'),
-        });
+            nickname: data.get('nickname'),
+            subway: data.get('subway')
+        }
+
+        const submit = async () => {
+            try{
+                const submitResult = await axios.post('/api/sign-up',body);
+                alert("회원가입에 성공하였습니다.");
+                window.location.href="/"
+
+            } catch (e){
+                console.log(e);
+            }
+        }
+        if(data.get('password')!==data.get('password_confirmation')){
+            return alert('비밀번호와 비밀번호 재확인에 입력된 값이 다릅니다.');
+        }
+        submit();
     };
 
     return (
@@ -105,10 +122,10 @@ export default function SignUp() {
                                     style={{backgroundColor:"white"}}
                                     required
                                     fullWidth
-                                    name="password confirmation"
+                                    name="password_confirmation"
                                     label="비밀번호 재확인"
                                     type="password"
-                                    id="password confirmation"
+                                    id="password_confirmation"
                                     autoComplete="pass confirmation"
                                 />
                             </Grid>
