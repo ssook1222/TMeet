@@ -45,4 +45,12 @@ export class UserController{
         }
 
     }
+
+    //이메일 저장하면 아이디를 리턴하는 함수
+    //...그냥 이메일을 pk로 만드는 게 낫지 않았을까...?
+    static matchID = async (req, res) => {
+        const email = req.body.email;
+        const result = await getConnection().getRepository(User).findOne({where: {email}});
+        return res.status(200).send({id: result.id});
+    }
 }

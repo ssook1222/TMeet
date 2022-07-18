@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import {KAKAO_AUTH_URL} from "./KakaoLogin/KakaoOauth/Oauth";
+import axios from "axios";
 
 const theme = createTheme({
     status: {
@@ -34,8 +35,21 @@ function Login() {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            console.log(JSON.stringify(values, null, 2));
-        },
+            const body = JSON.stringify(values, null, 2);
+            const submit = async () => {
+                try{
+                    const submitResult = await axios.post('/api/log-in',body);
+                    console.log(submitResult)
+                    sessionStorage.setItem("email", values.email); //세션 스토리지 저장
+                    alert("로그인에 성공하였습니다.");
+                    window.location.href="/"
+
+                } catch (e){
+                    console.log(e);
+                }
+            }
+            submit();
+        }
     });
 
     return (
