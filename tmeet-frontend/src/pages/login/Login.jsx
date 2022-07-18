@@ -11,6 +11,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import {KAKAO_AUTH_URL} from "./KakaoLogin/KakaoOauth/Oauth";
+import axios from "axios";
 
 const theme = createTheme({
     status: {
@@ -34,8 +35,21 @@ function Login() {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            console.log(JSON.stringify(values, null, 2));
-        },
+            const body = JSON.stringify(values, null, 2);
+            const submit = async () => {
+                try{
+                    const submitResult = await axios.post('/api/log-in',body);
+                    console.log(submitResult)
+                    sessionStorage.setItem("email", values.email); //세션 스토리지 저장
+                    alert("로그인에 성공하였습니다.");
+                    window.location.href="/"
+
+                } catch (e){
+                    console.log(e);
+                }
+            }
+            submit();
+        }
     });
 
     return (
@@ -104,32 +118,31 @@ function Login() {
                                     <b>Sign In</b>
                                 </Button>
                                 <hr/>
-                                <h4 style={{color:"#656262", textAlign: "center"}}>혹은 SNS로 로그인하기</h4>
-
-                                <div style={{display:"block", margin:"auto", width:"50%"}}>
-                                    <Button
-                                        href={"/google-login"}
-                                        style={{
-                                            width:"50%",
-                                            display:"inline-block",
-                                            margin:"auto"}}
-                                    >
-                                        <img
-                                            style={{width:"3vw", display:"block", margin:"auto"}}
-                                            src={"img/google.png"}></img>
-                                    </Button>
-                                    <Button
-                                        href={KAKAO_AUTH_URL}
-                                        style={{
-                                            width:"50%",
-                                            display:"inline-block",
-                                            margin:"auto"}}
-                                    >
-                                        <img
-                                            style={{width:"3vw", display:"block", margin:"auto"}}
-                                            src={"img/kakao-talk.png"}></img>
-                                </Button>
-                                </div>
+                                {/*<h4 style={{color:"#656262", textAlign: "center"}}>혹은 SNS로 로그인하기</h4>*/}
+                                {/*<div style={{display:"block", margin:"auto", width:"50%"}}>*/}
+                                {/*    <Button*/}
+                                {/*        href={"/google-login"}*/}
+                                {/*        style={{*/}
+                                {/*            width:"50%",*/}
+                                {/*            display:"inline-block",*/}
+                                {/*            margin:"auto"}}*/}
+                                {/*    >*/}
+                                {/*        <img*/}
+                                {/*            style={{width:"3vw", display:"block", margin:"auto"}}*/}
+                                {/*            src={"img/google.png"}></img>*/}
+                                {/*    </Button>*/}
+                                {/*    <Button*/}
+                                {/*        href={KAKAO_AUTH_URL}*/}
+                                {/*        style={{*/}
+                                {/*            width:"50%",*/}
+                                {/*            display:"inline-block",*/}
+                                {/*            margin:"auto"}}*/}
+                                {/*    >*/}
+                                {/*        <img*/}
+                                {/*            style={{width:"3vw", display:"block", margin:"auto"}}*/}
+                                {/*            src={"img/kakao-talk.png"}></img>*/}
+                                {/*</Button>*/}
+                                {/*</div>*/}
 
                                 <h5 style={{textAlign:"center",
                                     marginTop:"5px",
@@ -139,7 +152,7 @@ function Login() {
                                       style={{display:"inline-block",
                                           textAlign:"center",
                                           width:"100%",
-                                          marginBottom:"5px"
+                                          marginBottom:"10px"
                                         }}
                                       variant="body2">
                                     {"회원가입"}

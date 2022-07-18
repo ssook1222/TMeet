@@ -25,6 +25,26 @@ export default function SignUp() {
         event.preventDefault();
 
         const data = new FormData(event.currentTarget);
+        if(data.get('email')===''){
+            alert('이메일을 입력하지 않으셨습니다.')
+        }
+
+        else if(data.get('password')===''){
+            alert('비밀번호를 입력하지 않으셨습니다.')
+        }
+
+        else if(data.get('nickname')===''){
+            alert('닉네임을 입력하지 않으셨습니다.')
+        }
+
+        else if(data.get('subway')===''){
+            alert('근처 지하철역을 입력하지 않으셨습니다.')
+        }
+
+        if(data.get('password')!==data.get('password_confirmation')){
+            return alert('비밀번호와 비밀번호 재확인에 입력된 값이 다릅니다.');
+        }
+
         let body = {
             email: data.get('email'),
             password: data.get('password'),
@@ -42,10 +62,10 @@ export default function SignUp() {
                 console.log(e);
             }
         }
-        if(data.get('password')!==data.get('password_confirmation')){
-            return alert('비밀번호와 비밀번호 재확인에 입력된 값이 다릅니다.');
+
+        if(data.get('email')!=='' && data.get('password')!=='' && data.get('nickname')!=='' && data.get('subway')!=='' && data.get('password')===data.get('password_confirmation')){
+            submit();
         }
-        submit();
     };
 
     return (
@@ -92,6 +112,8 @@ export default function SignUp() {
                                     label="닉네임"
                                     name="nickname"
                                     autoComplete="nickname"
+                                    inputProps={{maxLength:15}}
+                                    helperText="닉네임은 15글자까지 가능합니다."
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -103,6 +125,8 @@ export default function SignUp() {
                                     label="이메일 주소"
                                     name="email"
                                     autoComplete="email"
+                                    inputProps={{maxLength:30}}
+                                    helperText="이메일은 30글자까지 입력 가능합니다."
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -115,6 +139,8 @@ export default function SignUp() {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
+                                    inputProps={{maxLength:8}}
+                                    helperText="비밀번호는 8글자까지 입력 가능합니다."
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -127,6 +153,7 @@ export default function SignUp() {
                                     type="password"
                                     id="password_confirmation"
                                     autoComplete="pass confirmation"
+                                    inputProps={{maxLength:8}}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -139,18 +166,8 @@ export default function SignUp() {
                                     type="name"
                                     id="subway"
                                     autoComplete="subway"
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={<Checkbox value="allowPrivateInfo" color="primary" />}
-                                    label="개인정보 수집 및 이용에 동의합니다."
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={<Checkbox value="allowService" color="primary" />}
-                                    label="서비스 이용 약관에 동의합니다."
+                                    inputProps={{maxLength:15}}
+                                    helperText="지하철역은 15글자까지 입력 가능합니다."
                                 />
                             </Grid>
                         </Grid>
