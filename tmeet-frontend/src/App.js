@@ -11,6 +11,7 @@ import TimeResult from './pages/timeresult/TimeResult';
 import KakaoRedirectTest from './pages/login/KakaoLogin/KakaoRedirectTest';
 import GoogleLogin from "./pages/login/GoogleLogin/GoogleLogin";
 import SignUp from "./pages/sign-up/SignUp"
+import PlaceMain from "./pages/place/PlaceMain";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/kakao-redirect" element={<KakaoRedirectTest />}></Route>
           <Route exact path="/google-login" element={<GoogleLogin />}></Route>
           <Route exact path="/sign-up" element={<SignUp />}></Route>
+          <Route exact path="/place-main" element={<PlaceMain />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
