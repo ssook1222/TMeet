@@ -27,5 +27,4 @@ class TimeSample extends React.Component {
     );
   }
 }
-
 export default TimeSample;

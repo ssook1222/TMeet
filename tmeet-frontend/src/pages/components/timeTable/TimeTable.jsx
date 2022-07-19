@@ -61,8 +61,8 @@ class TimeTable extends Component {
 
 function appendTable() {
   const rowCnt = 11;
-  const columnCnt = 5;
-  const array = ['월', '화', '수', '목', '금'];
+  const columnCnt = 7;
+  const array = ['월', '화', '수', '목', '금', '토', '일'];
   let table = document.createElement('table');
   let thead = document.createElement('thead');
   for (let j = 0; j < columnCnt; j++) {
