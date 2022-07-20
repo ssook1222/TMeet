@@ -16,6 +16,7 @@
     "formik": "^2.2.9",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-naver-maps": "0.0.13",
     "react-router-dom": "^6.3.0",
     "react-schedule-selector": "^3.0.0",
     "react-scripts": "5.0.0",
@@ -42,8 +43,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
-  ,
+  "proxy": "http://localhost:5000",
   "devDependencies": {
     "eslint": "8.0.0"
   }

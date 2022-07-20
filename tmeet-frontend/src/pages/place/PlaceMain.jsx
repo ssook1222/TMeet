@@ -23,7 +23,14 @@ const PlaceMain = () => {
         }}>
             <NavBar></NavBar>
             <Container
-                component="main" maxWidth="sm">
+                component="main"
+                maxWidth="sm"
+                style={{
+                    display:'flex',
+                    height:'100%',
+                    alignItems: 'center'
+                }}
+            >
                 <CssBaseline />
                 <Box
                     sx={{
