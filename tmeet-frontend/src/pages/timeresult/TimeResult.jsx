@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../components/navigationBar/NavBar';
 import TimeTableMerge from '../components/timeTableMerge/TimeTableMerge';
 import './TimeResult.css';
+import axios from "axios";
 
 const rowCnt = 11;
 const columnCnt = 7;
@@ -28,7 +29,18 @@ for(let k = 0; k < rowCnt; k++)    //2차원 배열 초기화
    }
 
 function TimeResult() {
-  return (
+        const loadTable = async() => {
+            axios.get('http://localhost:5000/api/time')
+                .then(()=>{
+                    console.log('success');
+                })
+                .catch(()=>{
+                    console.log('fail');
+                })
+
+        }
+        loadTable();
+        return (
     <div>
       <div className="App">
         <NavBar></NavBar>
