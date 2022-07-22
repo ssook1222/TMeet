@@ -6,23 +6,18 @@ import './Main.css';
 function App() {
     return (
         <body>
-            <div className="App">
-                <NavBar></NavBar>
+        <div className="App">
+            <NavBar></NavBar>
+        </div>
+        <div className= "wrap">
+            <div className="mainTitle">
+                Team IT ?  T Meet !
             </div>
-           <div className= "wrap">
-                   <div className="title">
-                       Team IT ?  T Meet !
-                       <h6>모임을 정하는 가장 쉬운 방법</h6>
-                   </div>
-                   {/*<div className= "meeting">*/}
-                   {/*    <img src="img/meeting.png"></img>*/}
-                   {/*</div>*/}
-               <div className= "meeting">
-                   <img sx={{ m: 1 }}
-                        style={{marginBottom:"10px"}}
-                        src="img/meeting.png"></img>
-               </div>
-           </div>
+            <a className="mainContent">모임을 정하는 가장 쉬운 방법</a>
+        </div>
+        <div className="meeting-img">
+            <img src="img/meeting-img.png"></img>
+        </div>
 
         </body>
     );
