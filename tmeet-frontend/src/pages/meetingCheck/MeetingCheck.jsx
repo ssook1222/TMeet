@@ -7,6 +7,11 @@ let select = "모임 날짜 및 시간",
     enddate1 = "YYYY-MM-DD AM/PM 00:00";
 
 function CheckApp() {
+    
+    function onClick(e){
+        window.location.href="/meeting-choice"
+    }
+    
     return (
         <body>
         <div className="App">
@@ -25,7 +30,7 @@ function CheckApp() {
                     <div style={{display : "flex", justifyContent : "space-between", marginBottom : "1vh"}}>
                         후보군1
                         <button
-                            Link href="/meeting-choice"
+                            onClick={onClick}
                             style={{ backgroundColor:"#a7d4d4", color : "white", borderColor : "#a7d4d4",borderRadius : "5px"}}>
                             <b>선택</b>
                         </button>
@@ -42,7 +47,7 @@ function CheckApp() {
                     <div style={{display : "flex", justifyContent : "space-between", marginBottom : "1vh"}}>
                         후보군2
                         <button
-                            Link href="/meeting-choice"
+                            onClick={onClick}
                             style={{ backgroundColor:"#a7d4d4", color : "white", borderColor : "#a7d4d4",borderRadius : "5px"}}>
                             <b>선택</b>
                         </button>
@@ -59,7 +64,7 @@ function CheckApp() {
                     <div style={{display : "flex", justifyContent : "space-between", marginBottom : "1vh"}}>
                         후보군3
                         <button
-                            Link href="/meeting-choice"
+                            onClick={onClick}
                             style={{ backgroundColor:"#a7d4d4", color : "white", borderColor : "#a7d4d4",borderRadius : "5px"}}>
                             <b>선택</b>
                         </button>
