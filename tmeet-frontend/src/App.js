@@ -11,7 +11,7 @@ import KakaoRedirectTest from './pages/login/KakaoLogin/KakaoRedirectTest';
 import GoogleLogin from "./pages/login/GoogleLogin/GoogleLogin";
 import SignUp from "./pages/sign-up/SignUp"
 import PlaceMain from "./pages/place/PlaceMain";
-import MapTest from "./pages/place/MapTest"
+import MapTest from "./pages/sample/MapSample"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
 import MeetingChoice from "./pages/meetingChoice/MeetingChoice";
 
