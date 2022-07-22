@@ -53,4 +53,14 @@ export class UserController{
         const result = await getConnection().getRepository(User).findOne({where: {email}});
         return res.status(200).send({id: result.id});
     }
+
+    static findNickname = async (req, res) => {
+        const nickname = req.body.nickname;
+
+        const result = await getConnection().getRepository(User).findOne({where:{nickname}});
+        console.log(result.email, result.nickname);
+
+        return res.status(200).send({email: result.email, nickname: result.nickname, subway: result.subway})
+    }
+
 }
