@@ -30,11 +30,11 @@ for(let k = 0; k < rowCnt; k++)    //2차원 배열 초기화
 
 function TimeResult() {
         const loadTable = async() => {
-            axios.get('http://localhost:5000/api/time')
-                .then(()=>{
+            await axios.get('http://localhost:5000/api/time')
+                .then((response)=>{
                     console.log('success');
                 })
-                .catch(()=>{
+                .catch((error)=>{
                     console.log('fail');
                 })
 
