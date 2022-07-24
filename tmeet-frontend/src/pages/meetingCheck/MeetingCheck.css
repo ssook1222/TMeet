@@ -7,7 +7,6 @@
     margin-bottom: 10%;
 }
 
-
 .checkTitle {
     margin: 0;
     text-align: center;
@@ -16,3 +15,43 @@
     font-weight: 800;
 }
 
+.checkBoxWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkBoxMargin {
+    margin: 1vh;
+}
+
+.checkBoxSelect {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+
+.checkBoxStyle {
+    display: flex;
+    margin: auto;
+    background-color: #E3FDFD;
+    width: 40vh;
+    height: 10vh;
+    color: #46B3B9;
+    text-align: center;
+}
+
+.selectButton {
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+}
+
+.weatherBox {
+    display: flex;
+    margin: auto;
+    background-color: #E3FDFD;
+    width: 40vh;
+    height: 5vh;
+}

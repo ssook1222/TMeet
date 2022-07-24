@@ -13,7 +13,7 @@ import SignUp from "./pages/sign-up/SignUp"
 import PlaceMain from "./pages/place/PlaceMain";
 import MapTest from "./pages/place/MapTest"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
-import MeetingChoice from "./pages/meetingChoice/MeetingChoice";
+import MeetingChoice from "./pages/meetingCheck/meetingChoice/MeetingChoice";
 
 function App() {
   return (

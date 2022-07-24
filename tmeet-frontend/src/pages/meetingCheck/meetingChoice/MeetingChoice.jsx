@@ -1,11 +1,12 @@
-import NavBar from "../components/navigationBar/NavBar";
+import NavBar from "../../components/navigationBar/NavBar";
 import {FormControl} from "@mui/material";
 import React from "react";
+import Kakao from "../../components/KakaoShare/KakaoShare";
+import KakaoShareButton from "../../components/KakaoShare/KakaoShare";
 
 let select = "모임 날짜 및 시간",
     startdate1 = "YYYY-MM-DD AM/PM 00:00",
     enddate1 = "YYYY-MM-DD AM/PM 00:00";
-
 
 
 function ChoiceApp() {
@@ -28,12 +29,13 @@ function ChoiceApp() {
             <div style={{display : "flex",margin : "auto",backgroundColor : '#E3FDFD', width : "40vh", height : "5vh"}}>
             </div>
         </div>
-        <div>
+        <div style={{marginTop : "5vh"}}>
+            <div style={{display : "block", margin : "auto", width : "4vw"}}>
+                <KakaoShareButton></KakaoShareButton>
+            </div>
         </div>
         </body>
     );
 }
-
-
 
 export default ChoiceApp;
