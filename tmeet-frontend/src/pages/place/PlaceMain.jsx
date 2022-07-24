@@ -7,6 +7,9 @@ import {Chip, Typography} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import PlaceUser from "../components/PlaceUser/PlaceUser"
+import axios from "axios";
+import {useEffect} from "react";
 
 const handleDelete = () => {
     console.info('You clicked the delete icon.');
@@ -14,6 +17,22 @@ const handleDelete = () => {
 
 
 const PlaceMain = () => {
+    let user=[]
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    const getUser = async () => {
+        const res  = await axios.post('/api/nickname', "쑥");
+        user.push(res.data)
+        console.log("!!!")
+        console.log(user)
+    }
+    getUser();
+
+    console.log("???")
+    console.log(user[0])
     return (
 
         <div style={{
@@ -88,8 +107,9 @@ const PlaceMain = () => {
                         container spacing={{ xs: 1, md: 2 }} columns={{ xs: 6, sm:16, md: 16 }}>
                         {Array.from(Array(6)).map((_, index) => (
                             <Grid item xs={2} sm={4} md={4} key={index}>
+
                                 <Chip
-                                    label={"test"} //데이터 바인딩
+                                    label={user.nickname}
                                     variant="filled"
                                     onDelete={handleDelete}  />
                             </Grid>
