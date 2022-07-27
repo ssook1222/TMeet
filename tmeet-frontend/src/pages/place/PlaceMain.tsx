@@ -8,14 +8,42 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 
+import User from "../../dto/User"
+import axios from "axios";
+import {useEffect, useState} from "react";
+
 const handleDelete = () => {
     console.info('You clicked the delete icon.');
 };
 
-
 const PlaceMain = () => {
-    return (
+    const [user, setUser] = useState<Array<User>>([]);
 
+    let body;
+
+    const newUser = []
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        // console.log("before")
+        // console.log(newUser)
+
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        body = {
+            nickname: data.get("nickname")
+        }
+        const onSubmit = async () => {
+            const res  = await axios.post('/api/nickname', body);
+            setUser(res.data)
+            newUser.unshift(res.data)
+        }
+        onSubmit();
+        // console.log("after")
+        console.log(newUser)
+    }
+
+    // @ts-ignore
+    return (
         <div style={{
             backgroundColor:"#F8FFFF",
             width: "100%",
@@ -43,6 +71,9 @@ const PlaceMain = () => {
                         borderRadius: '10px',
                         marginBottom: '10px'
                     }}
+                    component="form"
+                    noValidate
+                    onSubmit={handleSubmit}
                 >
                     <Typography style={{
                         marginTop:"30px",
@@ -86,10 +117,10 @@ const PlaceMain = () => {
                     <Grid
                         style={{marginLeft:"30px", marginRight:"10px", padding:"10px"}}
                         container spacing={{ xs: 1, md: 2 }} columns={{ xs: 6, sm:16, md: 16 }}>
-                        {Array.from(Array(6)).map((_, index) => (
+                        {Array.from(Array(user.length)).map((_, index) => (
                             <Grid item xs={2} sm={4} md={4} key={index}>
                                 <Chip
-                                    label={"test"} //데이터 바인딩
+                                    label={user.nickname}
                                     variant="filled"
                                     onDelete={handleDelete}  />
                             </Grid>
