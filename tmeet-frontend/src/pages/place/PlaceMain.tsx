@@ -17,10 +17,13 @@ const handleDelete = () => {
 };
 
 
+
 const PlaceMain = () => {
     const [user, setUser] = useState<Array<User>>([]);
 
     let body;
+
+    const newUser = []
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -32,12 +35,17 @@ const PlaceMain = () => {
 
         console.log(body)
 
+
+
         const onSubmit = async () => {
-            const res  = await axios.post('/api/nickname', "lucy");
-            console.log(res.data)
+            const res  = await axios.post('/api/nickname', body);
             setUser(res.data)
+            sessionStorage.setItem("nickname", res.data.nickname); //세션 스토리지 저장
+            newUser.push(res.data)
         }
         onSubmit();
+
+        console.log(newUser)
     }
 
     return (
@@ -68,6 +76,9 @@ const PlaceMain = () => {
                         borderRadius: '10px',
                         marginBottom: '10px'
                     }}
+                    component="form"
+                    noValidate
+                    onSubmit={handleSubmit}
                 >
                     <Typography style={{
                         marginTop:"30px",
