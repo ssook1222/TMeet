@@ -10,13 +10,11 @@ import Grid from "@mui/material/Grid";
 
 import User from "../../dto/User"
 import axios from "axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const handleDelete = () => {
     console.info('You clicked the delete icon.');
 };
-
-
 
 const PlaceMain = () => {
     const [user, setUser] = useState<Array<User>>([]);
@@ -26,28 +24,25 @@ const PlaceMain = () => {
     const newUser = []
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        // console.log("before")
+        // console.log(newUser)
+
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-
         body = {
             nickname: data.get("nickname")
         }
-
-        console.log(body)
-
-
-
         const onSubmit = async () => {
             const res  = await axios.post('/api/nickname', body);
             setUser(res.data)
-            sessionStorage.setItem("nickname", res.data.nickname); //세션 스토리지 저장
-            newUser.push(res.data)
+            newUser.unshift(res.data)
         }
         onSubmit();
-
+        // console.log("after")
         console.log(newUser)
     }
 
+    // @ts-ignore
     return (
         <div style={{
             backgroundColor:"#F8FFFF",
