@@ -10,7 +10,11 @@ import Grid from "@mui/material/Grid";
 
 import User from "../../dto/User"
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+
+const onClick = () => {
+    window.location.href="/subway-main"
+}
 
 const handleDelete = () => {
     console.info('You clicked the delete icon.');
@@ -24,8 +28,6 @@ const PlaceMain = () => {
     const newUser = []
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        // console.log("before")
-        // console.log(newUser)
 
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -38,11 +40,9 @@ const PlaceMain = () => {
             newUser.unshift(res.data)
         }
         onSubmit();
-        // console.log("after")
         console.log(newUser)
     }
 
-    // @ts-ignore
     return (
         <div style={{
             backgroundColor:"#F8FFFF",
@@ -52,7 +52,7 @@ const PlaceMain = () => {
             <NavBar></NavBar>
             <Container
                 component="main"
-                maxWidth="sm"
+                maxWidth="xs"
                 style={{
                     display:'flex',
                     height:'100%',
@@ -76,6 +76,8 @@ const PlaceMain = () => {
                     onSubmit={handleSubmit}
                 >
                     <Typography style={{
+                        marginLeft:"30px",
+                        marginRight:"30px",
                         marginTop:"30px",
                         marginBottom:"10px",
                         fontSize:"1.5rem"}}>
@@ -127,7 +129,7 @@ const PlaceMain = () => {
                         ))}
                     </Grid>
                     <Button
-                        type="submit"
+                        onClick={onClick}
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
