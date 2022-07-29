@@ -41,7 +41,7 @@ const SubwayMain = () => {
                             zoomControl={true} // 지도 zoom 허용
                         >
                             <Marker
-                                position={{lat: 37.49988, lng: 127.03856}}
+                                position={{lat: 37.509032000000005, lng: 126.94041200000001}}
                                 onClick={()=>alert("여기가 중간지점입니다.")}
                             />
                         </NaverMap>
