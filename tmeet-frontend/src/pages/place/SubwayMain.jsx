@@ -13,7 +13,7 @@ const SubwayMain = () => {
             width: "100%",
             height: "100vh"}}>
             <NavBar></NavBar>
-            <h2 style={{marginTop:"30px",marginBottom:"-150px",textAlign:"center"}}>모임 장소 결과입니다.</h2>
+            <h2 style={{marginTop:"50px",marginBottom:"-180px",textAlign:"center"}}><b>모임 중간 장소</b> 추천 결과입니다.</h2>
             <Container
                 component="main"
                 maxWidth="lg"
@@ -43,11 +43,6 @@ const SubwayMain = () => {
                             <Marker
                                 position={{lat: 37.49988, lng: 127.03856}}
                                 onClick={()=>alert("여기가 중간지점입니다.")}
-                                icon={{
-                                    url: "https://static.thenounproject.com/png/17626-200.png",
-                                    scaledSize:{width:32,height:32},
-                                    size:{width:32,height:32}
-                                }}
                             />
                         </NaverMap>
                     </RenderAfterNavermapsLoaded>
