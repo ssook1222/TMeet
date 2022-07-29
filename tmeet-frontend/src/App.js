@@ -11,6 +11,7 @@ import KakaoRedirectTest from './pages/login/KakaoLogin/KakaoRedirectTest';
 import GoogleLogin from "./pages/login/GoogleLogin/GoogleLogin";
 import SignUp from "./pages/sign-up/SignUp"
 import PlaceMain from "./pages/place/PlaceMain.tsx";
+import SubwayMain from "./pages/place/SubwayMain";
 import MapTest from "./pages/sample/MapSample"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
 import MeetingChoice from "./pages/meetingChoice/MeetingChoice";
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/google-login" element={<GoogleLogin />}></Route>
           <Route exact path="/sign-up" element={<SignUp />}></Route>
           <Route exact path="/place-main" element={<PlaceMain />}></Route>
+          <Route exact path="/subway-main" element={<SubwayMain />}></Route>
           <Route exact path="/map-test" element={<MapTest />}></Route>
           <Route exact path="/meeting-check" element={<MeetingCheck />}></Route>
           <Route exact path="/meeting-choice" element={<MeetingChoice />}></Route>
