@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './TimeTable.css';
+import axios from "axios";
 
 let dragging = false;
 let startTd = 0,
   curTd = 0;
+const rowCnt = 11;
+const columnCnt = 7;
+const dayArray = ['월', '화', '수', '목', '금', '토', '일'];
 
-class TimeTable extends Component {
-  render() {
+function TimeTable() {
     return (
       <div>
         <div className="tt" style={{ display: 'inline-block', float: 'left' }}>
@@ -54,20 +57,17 @@ class TimeTable extends Component {
         <div className="tt" style={{ display: 'inline-block', float: 'left' }}>
           {appendTable()}
         </div>
+        <div>{appendButton()}</div>
       </div>
     );
-  }
 }
 
 function appendTable() {
-  const rowCnt = 11;
-  const columnCnt = 7;
-  const array = ['월', '화', '수', '목', '금', '토', '일'];
   let table = document.createElement('table');
   let thead = document.createElement('thead');
   for (let j = 0; j < columnCnt; j++) {
     let th = document.createElement('th');
-    th.innerHTML = array[j];
+    th.innerHTML = dayArray[j];
     thead.appendChild(th);
   }
   table.appendChild(thead);
@@ -144,5 +144,45 @@ function up(e) {
 function dragstart(e) {
   e.preventDefault();
 }
+
+function appendButton(){
+  let btn = document.createElement('button');
+  btn.innerHTML = "확인";
+  btn.addEventListener("click", function(e){
+    let body = {
+      email: ".",
+      timetable: {월:'', 화:'', 수:'', 목:'', 금:'', 토:'', 일:''}
+    };
+
+    const submit = async() =>{
+      try{
+        body.timetable = JSON.stringify(body.timetable);
+        console.log(body.timetable);
+        const submitResult = await axios.post('/api/time',body);
+        console.log(submitResult);
+        //window.location.href="/timeresult";
+      } catch (e){
+        console.log(e);
+      }
+    }
+
+    let tdArray = document.getElementsByClassName('ttd');
+
+    for(let j = 0; j < columnCnt; j++) {
+      let keyname = dayArray[j];
+      for (let k = 0; k < rowCnt; k++) {
+        let tdIndex = k * columnCnt + j;
+        if (tdArray[tdIndex].style.backgroundColor == 'aqua')
+          body.timetable[keyname] += "1.";
+        else
+          body.timetable[keyname] += "0.";
+      }
+    }
+    submit();
+  });
+  document.body.appendChild(btn);
+
+}
+
 
 export default TimeTable;
