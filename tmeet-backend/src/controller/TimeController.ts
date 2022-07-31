@@ -16,6 +16,11 @@ export class TimeController{
     }
 
     static loadTime = async (req, res) => {
+        const repository = getConnection().getRepository(Time);
 
+        const { timetable } = await repository.findOneBy({time_id: req.query.time_id});
+        console.log(req.params.time_id);
+
+        res.status(200).send(timetable);
     }
 }

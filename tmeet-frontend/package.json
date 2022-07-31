@@ -18,6 +18,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-naver-maps": "0.0.13",
+    "react-paypal-express-checkout": "^1.0.5",
     "react-router-dom": "^6.3.0",
     "react-schedule-selector": "^3.0.0",
     "react-scripts": "5.0.0",
