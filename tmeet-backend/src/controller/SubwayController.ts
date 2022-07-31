@@ -44,6 +44,28 @@ export class SubwayController{
 
         console.log(result_lat, result_lng)
 
-        res.status(200).send({"res_lat":result_lng, "res_lng":result_lat})
+        const allSubway = await getConnection().getRepository(Subway).find();
+
+        let raw_distance_data = []
+
+        for(let i=0; i<763; i++) {
+            let raw_lng = allSubway[i].lng - result_lng
+            let raw_lat = allSubway[i].lat - result_lat
+
+            let raw_value = Math.pow(raw_lng, 2) + Math.pow(raw_lat, 2)
+            raw_distance_data[i] = raw_value
+        }
+
+        let min_dist = raw_distance_data[0]
+        let min_index = 0;
+
+        for(let i=0; i<763; i++){
+            if(raw_distance_data[i]<min_dist){
+                min_dist=raw_distance_data[i]
+                min_index=i
+            }
+        }
+
+        res.status(200).send({"res_lat":allSubway[min_index].lng, "res_lng":allSubway[min_index].lat, "subway_name":allSubway[min_index].subway_name})
     }
 }
