@@ -37,13 +37,13 @@ const KakaoShareButton = () => {
                             webUrl: window.location.href,
                         },
                     },
-                    {
-                        title: '앱으로 보기',
-                        link: {
-                            mobileWebUrl: window.location.href,
-                            webUrl: window.location.href,
-                        },
-                    },
+                    // {
+                    //     title: '앱으로 보기',
+                    //     link: {
+                    //         mobileWebUrl: window.location.href,
+                    //         webUrl: window.location.href,
+                    //     },
+                    // },
                 ],
             })
         }
@@ -55,7 +55,7 @@ const KakaoShareButton = () => {
             <button id="kakao-link-btn"
                     style={{border : "none"}}>
                 <img src="img/kakao-talk.png" alt="kakao-share-icon"
-                    style={{width : "8vh"}}/>
+                    style={{width : "6vh", margin : "5px"}}/>
             </button>
         </div>
     )

@@ -1,0 +1,28 @@
+.kakaoShare {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.checkTitle {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.checkBoxStyle {
+    display: flex;
+    margin: auto;
+    background-color: #E3FDFD;
+    width: 40vh;
+    height: 10vh;
+    color: #46B3B9;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.weatherBox {
+    display: flex;
+    margin: auto;
+    background-color: #E3FDFD;
+    width: 40vh;
+    height: 5vh;
+    font-family: 'Noto Sans KR', sans-serif;
+}
