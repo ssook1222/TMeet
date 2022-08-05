@@ -10,7 +10,7 @@ import TimeResult from './pages/timeresult/TimeResult';
 import KakaoRedirectTest from './pages/login/KakaoLogin/KakaoRedirectTest';
 import GoogleLogin from "./pages/login/GoogleLogin/GoogleLogin";
 import SignUp from "./pages/sign-up/SignUp"
-import PlaceMain from "./pages/place/PlaceMain";
+import PlaceMain from "./pages/place/PlaceMain.tsx";
 import SubwayMain from "./pages/place/SubwayMain";
 import MapTest from "./pages/sample/MapSample"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
