@@ -25,8 +25,6 @@ const PlaceMain = () => {
 
     let body;
 
-    const newUser = []
-
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
@@ -36,11 +34,15 @@ const PlaceMain = () => {
         }
         const onSubmit = async () => {
             const res  = await axios.post('/api/nickname', body);
-            setUser(res.data)
-            newUser.unshift(res.data)
+            //1. user배열을 spread(...)연산자로 새로운 new_user 배열 생성
+            const new_user = [...user]
+            //2. new_user에다가 서버에서 넘어온 객체를 추가한다. 바로 set ㄴㄴ
+            new_user.push(res.data)
+            //3. new_user를 setUser에 집어넣기
+            setUser(new_user)
         }
         onSubmit();
-        console.log(newUser)
+
     }
 
     return (
@@ -122,7 +124,7 @@ const PlaceMain = () => {
                         {Array.from(Array(user.length)).map((_, index) => (
                             <Grid item xs={2} sm={4} md={4} key={index}>
                                 <Chip
-                                    label={user.nickname}
+                                    label={user[index].nickname} //4. 루프 돌릴 때 user로 돌리기
                                     variant="filled"
                                     onDelete={handleDelete}  />
                             </Grid>
