@@ -7,6 +7,7 @@ let select = "모임 날짜 및 시간",
     enddate1 = "YYYY-MM-DD AM/PM 00:00";
 
 function CheckApp() {
+    
     function onClick(e){
         window.location.href="/meeting-choice"
     }
