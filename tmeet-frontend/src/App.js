@@ -13,7 +13,7 @@ import SignUp from "./pages/sign-up/SignUp"
 import PlaceMain from "./pages/place/PlaceMain.tsx";
 import SubwayMain from "./pages/place/SubwayMain";
 import MapTest from "./pages/sample/MapSample"
-import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
+import MeetingCheck from "./pages/meetingChoice/MeetingChoice";
 import MeetingChoice from "./pages/meetingChoice/MeetingChoice";
 
 function App() {

@@ -34,10 +34,15 @@ const PlaceMain = () => {
         }
         const onSubmit = async () => {
             const res  = await axios.post('/api/nickname', body);
+            console.log(res.data)
             //1. user배열을 spread(...)연산자로 새로운 new_user 배열 생성
             const new_user = [...user]
             //2. new_user에다가 서버에서 넘어온 객체를 추가한다. 바로 set ㄴㄴ
-            new_user.push(res.data)
+            //중복된 값이 없게끔 검사하고 넣어야 됨
+            // -> 문제는 닉네임만 저장됨 다른 방법 찾아보기!!!
+            if(new_user.includes(res.data.nickname)==false){
+                new_user.push(res.data.nickname)
+            }
             //3. new_user를 setUser에 집어넣기
             setUser(new_user)
         }
@@ -124,7 +129,7 @@ const PlaceMain = () => {
                         {Array.from(Array(user.length)).map((_, index) => (
                             <Grid item xs={2} sm={4} md={4} key={index}>
                                 <Chip
-                                    label={user[index].nickname} //4. 루프 돌릴 때 user로 돌리기
+                                    label={user[index]} //4. 루프 돌릴 때 user로 돌리기
                                     variant="filled"
                                     onDelete={handleDelete}  />
                             </Grid>
