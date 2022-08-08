@@ -2,7 +2,6 @@ import * as React from 'react';
 import NavBar from "../components/navigationBar/NavBar";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
-import {Marker, NaverMap, RenderAfterNavermapsLoaded} from "react-naver-maps";
 import axios from "axios";
 import {useEffect, useState} from "react";
 
@@ -13,31 +12,6 @@ const SubwayMain = () => {
 
     useEffect(() => {
         findSubway()
-        let map = null
-        let marker = null
-        const initMap = () => {
-            map = new naver.maps.Map('map', {
-                center: new naver.maps.LatLng(37.527666408103, 	126.86157157014),
-                zoom: 18,
-                mapTypes: new naver.maps.MapTypeRegistry({
-                    'normal': naver.maps.NaverStyleMapTypeOptions.getNormalMap(
-                        {
-                            overlayType: 'bg.sw.lko'
-                        }
-                    )
-                })
-            });
-            marker = new naver.maps.Marker({
-                position: new naver.maps.LatLng(37, 127.039573), //Marker 추가, 좌표에 마커가 찍힌다.
-                map: map,
-                icon: {
-                    content: `
-              <img alt="marker" />
-            `
-                }
-            });
-        }
-        initMap()
     }, []);
 
 
@@ -57,6 +31,31 @@ const SubwayMain = () => {
                 setLat(findResult.data.res_lat)
                 setLng(findResult.data.res_lng)
 
+                let map = null
+                let marker = null
+                const initMap = () => {
+                    map = new naver.maps.Map('map', {
+                        center: new naver.maps.LatLng(findResult.data.res_lat, findResult.data.res_lng),
+                        zoom: 18,
+                        mapTypes: new naver.maps.MapTypeRegistry({
+                            'normal': naver.maps.NaverStyleMapTypeOptions.getNormalMap(
+                                {
+                                    overlayType: 'bg.sw.lko'
+                                }
+                            )
+                        })
+                    });
+                    marker = new naver.maps.Marker({
+                        position: new naver.maps.LatLng(37, 127.039573), //Marker 추가, 좌표에 마커가 찍힌다.
+                        map: map,
+                        icon: {
+                            content: `
+                    <img alt="marker" />
+                    `
+                        }
+                    });
+                }
+                initMap()
             } catch (e){
                 console.log(e);
             }
@@ -82,28 +81,6 @@ const SubwayMain = () => {
             >
                 <CssBaseline />
                     <div id="map" style={mapStyle} />
-                    {/*<RenderAfterNavermapsLoaded*/}
-                    {/*    ncpClientId="pnq5016zbg"*/}
-                    {/*    // 네이버 클라우드에서 받은 client id를 적어야 한다.*/}
-                    {/*    // 필자는 환경변수 이용*/}
-                    {/*    error={<p>Maps Load Error</p>}*/}
-                    {/*    loading={<p>Loading Finish</p>}*/}
-                    {/*>*/}
-                    {/*    <NaverMap*/}
-                    {/*        style={{*/}
-                    {/*            width: '100%',*/}
-                    {/*            height: '50%'}}*/}
-                    {/*        mapDivId="map"*/}
-                    {/*        defaultCenter={console.log(lng, lat)} //{lat:lng, lng:lat}*/}
-                    {/*        defaultZoom={16}*/}
-                    {/*        zoomControl={true} // 지도 zoom 허용*/}
-                    {/*    >*/}
-                    {/*        <Marker*/}
-                    {/*            position={{lat: 37.509032000000005, lng: 126.94041200000001}}*/}
-                    {/*            onClick={()=>alert("여기가 중간지점입니다.")}*/}
-                    {/*        />*/}
-                    {/*    </NaverMap>*/}
-                    {/*</RenderAfterNavermapsLoaded>*/}
             </Container>
         </div>
     );
