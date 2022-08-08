@@ -38,6 +38,7 @@ const PlaceMain = () => {
             //1. user배열을 spread(...)연산자로 새로운 new_user 배열 생성
             const new_user = [...user]
             const new_user_nickname = [...nickname]
+            
             //2. new_user에다가 서버에서 넘어온 객체를 추가한다. 바로 set ㄴㄴ
             //중복된 값이 없게끔 검사하고 넣어야 됨
             // -> 문제는 닉네임만 저장됨 다른 방법 찾아보기!!!
@@ -52,8 +53,6 @@ const PlaceMain = () => {
             //3. new_user를 setUser에 집어넣기
             setNickname(new_user_nickname)
             setUser(new_user)
-
-            console.log(new_user)
         }
         onSubmit();
 
