@@ -1,7 +1,5 @@
 import {Router} from "express";
 import {UserController} from "../controller/UserController";
-import {WeatherControllerMedium} from "../controller/WeatherController";
-import {WeatherControllerShort} from "../controller/WeatherController";
 import {MapController} from "../controller/MapController";
 import {TimeController} from "../controller/TimeController";
 import {SubwayController} from "../controller/SubwayController";
