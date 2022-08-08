@@ -21,6 +21,7 @@ const handleDelete = () => {
 };
 
 const PlaceMain = () => {
+    const [nickname, setNickname] = useState<Array<User>>([]);
     const [user, setUser] = useState<Array<User>>([]);
 
     let body;
@@ -34,17 +35,25 @@ const PlaceMain = () => {
         }
         const onSubmit = async () => {
             const res  = await axios.post('/api/nickname', body);
-            console.log(res.data)
             //1. user배열을 spread(...)연산자로 새로운 new_user 배열 생성
             const new_user = [...user]
+            const new_user_nickname = [...nickname]
             //2. new_user에다가 서버에서 넘어온 객체를 추가한다. 바로 set ㄴㄴ
             //중복된 값이 없게끔 검사하고 넣어야 됨
             // -> 문제는 닉네임만 저장됨 다른 방법 찾아보기!!!
-            if(new_user.includes(res.data.nickname)==false){
-                new_user.push(res.data.nickname)
+            if(nickname.includes(res.data.nickname)==false){
+                new_user_nickname.push(res.data.nickname)
+                new_user.push(res.data)
+            }
+
+            else if(nickname.includes(res.data.nickname)==true){
+                alert("이미 있는 닉네임입니다.")
             }
             //3. new_user를 setUser에 집어넣기
+            setNickname(new_user_nickname)
             setUser(new_user)
+
+            console.log(new_user)
         }
         onSubmit();
 
@@ -129,7 +138,7 @@ const PlaceMain = () => {
                         {Array.from(Array(user.length)).map((_, index) => (
                             <Grid item xs={2} sm={4} md={4} key={index}>
                                 <Chip
-                                    label={user[index]} //4. 루프 돌릴 때 user로 돌리기
+                                    label={nickname[index]} //4. 루프 돌릴 때 user로 돌리기
                                     variant="filled"
                                     onDelete={handleDelete}  />
                             </Grid>
