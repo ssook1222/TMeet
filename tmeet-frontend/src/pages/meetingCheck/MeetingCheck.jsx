@@ -1,5 +1,5 @@
-import NavBar from "../components/navigationBar/NavBar";
 import React from "react";
+import NavBar from "../components/navigationBar/NavBar";
 import './MeetingCheck.css';
 
 let select = "모임 날짜 및 시간",
@@ -11,7 +11,6 @@ function CheckApp() {
     function onClick(e){
         window.location.href="/meeting-choice"
     }
-    
     return (
         <body>
         <div className="App">
@@ -26,59 +25,55 @@ function CheckApp() {
         <div>
             <div style={{display : "flex", flexWrap : "wrap", justifyContent : "center"}}>
                 {/*박스1*/}
-                <div style={{margin : "1vh"}}>
-                    <div style={{display : "flex", justifyContent : "space-between", marginBottom : "1vh"}}>
+                <div className= "checkBoxMargin">
+                    <div className= "checkBoxSelect">
                         후보군1
-                        <button
-                            onClick={onClick}
-                            style={{ backgroundColor:"#a7d4d4", color : "white", borderColor : "#a7d4d4",borderRadius : "5px"}}>
+                        <button className= "selectButton"
+                                onClick={onClick}>
                             <b>선택</b>
                         </button>
                     </div>
-                    <div style={{display : "flex",margin:"auto",backgroundColor : '#E3FDFD', width : "40vh", height : "10vh", color : "#46B3B9", textAlign : "center"}}>
-                        <h4 style={{margin : "auto"}}>{select} <br></br> {startdate1} <br></br> {enddate1}</h4>
+                    <div className= "checkBoxStyle">
+                        <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
                     </div>
                     <div style={{margin : "0.5vh"}}></div>
-                    <div style={{display : "flex",margin : "auto",backgroundColor : '#E3FDFD', width : "40vh", height : "5vh"}}>
+                    <div className= "weatherBox">
                     </div>
                 </div>
                 {/*박스2*/}
-                <div style={{margin : "1vh"}}>
-                    <div style={{display : "flex", justifyContent : "space-between", marginBottom : "1vh"}}>
+                <div className= "checkBoxMargin">
+                    <div className= "checkBoxSelect">
                         후보군2
-                        <button
-                            onClick={onClick}
-                            style={{ backgroundColor:"#a7d4d4", color : "white", borderColor : "#a7d4d4",borderRadius : "5px"}}>
+                        <button className= "selectButton"
+                                onClick={onClick}>
                             <b>선택</b>
                         </button>
                     </div>
-                    <div style={{display : "flex",margin:"auto",backgroundColor : '#E3FDFD', width : "40vh", height : "10vh", color : "#46B3B9", textAlign : "center"}}>
-                        <h4 style={{margin : "auto"}}>{select} <br></br> {startdate1} <br></br> {enddate1}</h4>
+                    <div className= "checkBoxStyle">
+                        <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
                     </div>
                     <div style={{margin : "0.5vh"}}></div>
-                    <div style={{display : "flex",margin : "auto",backgroundColor : '#E3FDFD', width : "40vh", height : "5vh"}}>
+                    <div className= "weatherBox">
                     </div>
                 </div>
                 {/*박스3*/}
-                <div style={{margin : "1vh"}}>
-                    <div style={{display : "flex", justifyContent : "space-between", marginBottom : "1vh"}}>
+                <div className= "checkBoxMargin">
+                    <div className= "checkBoxSelect">
                         후보군3
-                        <button
-                            onClick={onClick}
-                            style={{ backgroundColor:"#a7d4d4", color : "white", borderColor : "#a7d4d4",borderRadius : "5px"}}>
+                        <button className= "selectButton"
+                                onClick={onClick}>
                             <b>선택</b>
                         </button>
                     </div>
-                    <div style={{display : "flex",margin:"auto",backgroundColor : '#E3FDFD', width : "40vh", height : "10vh", color : "#46B3B9", textAlign : "center"}}>
-                        <h4 style={{margin : "auto"}}>{select} <br></br> {startdate1} <br></br> {enddate1}</h4>
+                    <div className= "checkBoxStyle">
+                        <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
                     </div>
                     <div style={{margin : "0.5vh"}}></div>
-                    <div style={{display : "flex",margin : "auto",backgroundColor : '#E3FDFD', width : "40vh", height : "5vh"}}>
+                    <div className= "weatherBox">
+
                     </div>
                 </div>
-
             </div>
-
         </div>
         </body>
     );
