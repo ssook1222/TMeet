@@ -35,7 +35,7 @@ const SubwayMain = () => {
                 let marker = null
                 const initMap = () => {
                     map = new naver.maps.Map('map', {
-                        center: new naver.maps.LatLng(findResult.data.res_lat, findResult.data.res_lng),
+                        center: new naver.maps.LatLng(findResult.data.res_lng, findResult.data.res_lng),
                         zoom: 18,
                         mapTypes: new naver.maps.MapTypeRegistry({
                             'normal': naver.maps.NaverStyleMapTypeOptions.getNormalMap(
@@ -46,16 +46,17 @@ const SubwayMain = () => {
                         })
                     });
                     marker = new naver.maps.Marker({
-                        position: new naver.maps.LatLng(37, 127.039573), //Marker 추가, 좌표에 마커가 찍힌다.
+                        position: new naver.maps.LatLng(findResult.data.res_lng, findResult.data.res_lng), //Marker 추가, 좌표에 마커가 찍힌다.
                         map: map,
                         icon: {
                             content: `
-                    <img alt="marker" />
-                    `
+              <img alt="marker" />
+            `
                         }
                     });
                 }
                 initMap()
+
             } catch (e){
                 console.log(e);
             }
