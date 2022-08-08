@@ -3,10 +3,9 @@
     margin-top: 5%;
     display: flex;
     align-items: center;
-    /*width: 100vw;*/
     margin-bottom: 10%;
+    font-family: 'Noto Sans KR', sans-serif;
 }
-
 
 .checkTitle {
     margin: 0;
@@ -16,3 +15,56 @@
     font-weight: 800;
 }
 
+
+.checkContent {
+    margin: 0;
+    font-size: calc(10px + 3vmin);
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+.checkBoxWrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.checkBoxMargin {
+    margin: 1vh;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.checkBoxSelect {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.checkBoxStyle {
+    display: flex;
+    margin: auto;
+    background-color: #E3FDFD;
+    width: 40vh;
+    height: 10vh;
+    color: #46B3B9;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.selectButton {
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.weatherBox {
+    display: flex;
+    margin: auto;
+    background-color: #E3FDFD;
+    width: 40vh;
+    height: 5vh;
+    font-family: 'Noto Sans KR', sans-serif;
+}
