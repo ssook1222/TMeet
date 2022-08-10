@@ -68,4 +68,27 @@ export class SubwayController{
 
         res.status(200).send({"res_lat":allSubway[min_index].lng, "res_lng":allSubway[min_index].lat, "subway_name":allSubway[min_index].subway_name})
     }
+
+    static subwaySearch = async (req, res) => {
+
+        var clientID = "Aw2vsaErgruZlTMoalHp";
+        var clientSecret = '0xbacAqeJP';
+        var api_url = 'https://openapi.naver.com/v1/search/blog?query=' + encodeURI(req.params.item) + encodeURI('카페');
+
+        const request = require('request');
+        const reg = /<[^>]*>?/g
+        var options = {
+            url: api_url,
+            headers: {'X-Naver-Client-Id': clientID, 'X-Naver-Client-Secret': clientSecret}
+        }
+        request.get(options, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+                res.end(body.replace(reg,''));
+            } else {
+                res.status(response.statusCode).end();
+                console.log('error = ' + response.statusCode);
+            }
+        })
+    }
 }
