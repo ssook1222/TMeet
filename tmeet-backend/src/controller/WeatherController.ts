@@ -1,6 +1,5 @@
 import axios from "axios";
 import convert from "xml-js";
-//https://www.npmjs.com/package/xml-js
 
 export class WeatherController {
     static weatherLookRequest = async (req, res) => {
@@ -66,7 +65,7 @@ export class WeatherController {
             res.send({"tmp": tmp, "snow": snow, "rain": rain});
         }
         //3일 후 ~ 10일 후 날씨 조회
-        if (checkDate >= todayDt && isDate <= 10) {
+        else if (checkDate >= todayDt && isDate <= 10) {
             const get_test_Medium = await axios.get(urlMedium);
             var xmlToJson = convert.xml2json(get_test_Medium.data, {compact: true, spaces: 4})
             xmlToJson = JSON.parse(xmlToJson);
@@ -116,7 +115,7 @@ export class WeatherController {
             res.send({"weatherAm": weatherAm, "weatherPm": weatherPm});
         }
         //checkDate 조회 불가능(오늘로부터 10일 이후)
-        if (isDate > 10) {
+        else if (isDate > 10) {
             res.send("조회불가");
         }
     }
