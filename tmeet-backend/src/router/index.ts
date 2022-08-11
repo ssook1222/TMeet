@@ -2,6 +2,7 @@ import {Router} from "express";
 import {UserController} from "../controller/UserController";
 import {TimeController} from "../controller/TimeController";
 import {SubwayController} from "../controller/SubwayController";
+import {WeatherController} from "../controller/WeatherController";
 
 const routes = Router();
 
@@ -16,5 +17,6 @@ routes.post('/time', TimeController.addTime);
 routes.post('/subway-test',SubwayController.subwayTest);
 routes.post('/subway',SubwayController.findSubway);
 
+routes.get('/weather',WeatherController.weatherLookRequest);
 
 export default routes;
