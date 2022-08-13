@@ -29,8 +29,8 @@ export class WeatherController {
         var endDate = year + month_ + endDay_;
 
         //기준일
-        var checkDate = "20220813";
-        var isDate = Number(checkDate) - Number(todayDt);
+        var checkDate = "20220813"; //모임 날짜(db에서 가져와야함)
+        var isDate = Number(checkDate) - Number(todayDt); //수정!!(숫자형이 아닌 날짜형으로)
 
         //서울 전지역 기준
         var urlShort = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=' + ServiceKey + '&pageNo=1&numOfRows=1000&dataType=XML&base_date=' + todayDt + '&base_time=0500&nx=60&ny=127';
