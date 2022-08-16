@@ -4,11 +4,13 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import SearchList from "./SearchList.tsx"
 
 const SubwayMain = () => {
 
     const [lat, setLat] = useState(0.0)
     const [lng, setLng] = useState(0.0)
+    const [subway_name,setSubway_name] = useState("불러오는 중입니다...")
 
     useEffect(() => {
         findSubway()
@@ -30,12 +32,13 @@ const SubwayMain = () => {
                 const findResult = await axios.post('/api/subway', body);
                 setLat(findResult.data.res_lat)
                 setLng(findResult.data.res_lng)
+                setSubway_name(findResult.data.subway_name)
 
                 let map = null
                 let marker = null
                 const initMap = () => {
                     map = new naver.maps.Map('map', {
-                        center: new naver.maps.LatLng(findResult.data.res_lng, findResult.data.res_lng),
+                        center: new naver.maps.LatLng(findResult.data.res_lat, findResult.data.res_lng),
                         zoom: 18,
                         mapTypes: new naver.maps.MapTypeRegistry({
                             'normal': naver.maps.NaverStyleMapTypeOptions.getNormalMap(
@@ -44,15 +47,6 @@ const SubwayMain = () => {
                                 }
                             )
                         })
-                    });
-                    marker = new naver.maps.Marker({
-                        position: new naver.maps.LatLng(findResult.data.res_lng, findResult.data.res_lng), //Marker 추가, 좌표에 마커가 찍힌다.
-                        map: map,
-                        icon: {
-                            content: `
-              <img alt="marker" />
-            `
-                        }
                     });
                 }
                 initMap()
@@ -70,7 +64,8 @@ const SubwayMain = () => {
             width: "100%",
             height: "100vh"}}>
             <NavBar></NavBar>
-            <h2 style={{marginTop:"50px",marginBottom:"-180px",textAlign:"center"}}><b>모임 중간 장소</b> 추천 결과입니다.</h2>
+            <h2 style={{marginTop:"50px",marginBottom:"-10px",textAlign:"center"}}><b>모임 중간 장소</b> 추천 결과입니다.</h2>
+            <h3 style={{marginTop:"50px",marginBottom:"-170px",textAlign:"center"}}> 추천 결과 : <b>{subway_name}</b></h3>
             <Container
                 component="main"
                 maxWidth="lg"
@@ -83,6 +78,7 @@ const SubwayMain = () => {
                 <CssBaseline />
                     <div id="map" style={mapStyle} />
             </Container>
+            <SearchList></SearchList>
         </div>
     );
 
