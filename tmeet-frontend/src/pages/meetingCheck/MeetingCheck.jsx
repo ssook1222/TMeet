@@ -1,6 +1,10 @@
 import React from "react";
 import NavBar from "../components/navigationBar/NavBar";
 import './MeetingCheck.css';
+import WeatherApp from "../components/weather/Weather";
+import Box from "@mui/material/Box";
+
+let now = new Date();
 
 let select = "모임 날짜 및 시간",
     startdate1 = "YYYY-MM-DD AM/PM 00:00",
@@ -33,11 +37,32 @@ function CheckApp() {
                             <b>선택</b>
                         </button>
                     </div>
-                    <div className= "checkBoxStyle">
-                        <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
-                    </div>
-                    <div style={{margin : "0.5vh"}}></div>
-                    <div className= "weatherBox">
+                    <div>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                backgroundColor : '#E3FDFD',
+                                color : '#46B3B9',
+                                width : '40vh',
+                                height : '15vh'
+                            }}>
+                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
+                        </Box>
+                        <div style={{margin : "0.5vh"}}></div>
+                        <Box className="weatherBox"
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                backgroundColor : '#E3FDFD',
+                                width : '40vh',
+                                height : 'auto',
+                                overflow : "scroll"
+                            }}>
+                            <WeatherApp></WeatherApp>
+                        </Box>
                     </div>
                 </div>
                 {/*박스2*/}
@@ -49,11 +74,32 @@ function CheckApp() {
                             <b>선택</b>
                         </button>
                     </div>
-                    <div className= "checkBoxStyle">
-                        <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
-                    </div>
-                    <div style={{margin : "0.5vh"}}></div>
-                    <div className= "weatherBox">
+                    <div>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                backgroundColor : '#E3FDFD',
+                                color : '#46B3B9',
+                                width : '40vh',
+                                height : '15vh'
+                            }}>
+                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
+                        </Box>
+                        <div style={{margin : "0.5vh"}}></div>
+                        <Box className="weatherBox"
+                             sx={{
+                                 display: 'flex',
+                                 flexDirection: 'column',
+                                 alignItems: 'center',
+                                 backgroundColor : '#E3FDFD',
+                                 width : '40vh',
+                                 height : 'auto',
+                                 overflow : "scroll"
+                             }}>
+                            <WeatherApp></WeatherApp>
+                        </Box>
                     </div>
                 </div>
                 {/*박스3*/}
@@ -65,12 +111,32 @@ function CheckApp() {
                             <b>선택</b>
                         </button>
                     </div>
-                    <div className= "checkBoxStyle">
-                        <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
-                    </div>
-                    <div style={{margin : "0.5vh"}}></div>
-                    <div className= "weatherBox">
-
+                    <div>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                backgroundColor : '#E3FDFD',
+                                color : '#46B3B9',
+                                width : '40vh',
+                                height : '15vh'
+                            }}>
+                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
+                        </Box>
+                        <div style={{margin : "0.5vh"}}></div>
+                        <Box className="weatherBox"
+                             sx={{
+                                 display: 'flex',
+                                 flexDirection: 'column',
+                                 alignItems: 'center',
+                                 backgroundColor : '#E3FDFD',
+                                 width : '40vh',
+                                 height : 'auto',
+                                 overflow : "scroll"
+                             }}>
+                            <WeatherApp></WeatherApp>
+                        </Box>
                     </div>
                 </div>
             </div>
