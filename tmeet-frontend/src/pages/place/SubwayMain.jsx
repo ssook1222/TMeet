@@ -38,7 +38,7 @@ const SubwayMain = () => {
                 let marker = null
                 const initMap = () => {
                     map = new naver.maps.Map('map', {
-                        center: new naver.maps.LatLng(findResult.data.res_lat, findResult.data.res_lng),
+                        center: new naver.maps.LatLng(findResult.data.res_lng, findResult.data.res_lng),
                         zoom: 18,
                         mapTypes: new naver.maps.MapTypeRegistry({
                             'normal': naver.maps.NaverStyleMapTypeOptions.getNormalMap(
@@ -48,9 +48,9 @@ const SubwayMain = () => {
                             )
                         })
                     });
+
                 }
                 initMap()
-
             } catch (e){
                 console.log(e);
             }
