@@ -1,7 +1,8 @@
 export default interface Search{
-    id : number,
-    email : string,
-    password : string,
-    nickname : string,
-    subway : string
+    title : string,
+    link : string,
+    description : string,
+    postdate : string,
+    bloggerlink : string,
+    bloggername : string
 }
