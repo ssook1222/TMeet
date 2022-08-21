@@ -1,16 +1,11 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Search from "../../dto/Search";
-import {Chip} from "@mui/material";
 import * as React from "react";
-import Grid from "@mui/material/Grid";
 
 
 const SearchList: React.FC = () => {
     const [searchList, setSearchList] = useState<Array<Search>>([]);
-    const [title, setTitle] = useState<Array<String>>([])
-
-    const new_title = [...title]
 
     useEffect(() => {
         getSearchList();
@@ -27,7 +22,9 @@ const SearchList: React.FC = () => {
     return (
         <div>
             {
-
+                searchList.map((search : Search)=>{
+                    {search.title}
+                })
             }
         </div>
     );
