@@ -1,4 +1,5 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {Meeting} from "./meeting";
 
 @Entity()
 export class User {
@@ -17,4 +18,6 @@ export class User {
     @Column({length: 15})
     subway: string;
 
+    @ManyToOne(type => Meeting, meeting => meeting.meeting_id)
+    meeting_id: Meeting;
 }
