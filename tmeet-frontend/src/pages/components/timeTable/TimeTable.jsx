@@ -120,6 +120,7 @@ const TimeTable = () => {
     if(columnCnt != 0) {
       console.log("button");
       let btn = document.createElement('button');
+      btn.id = "submitButton"
       btn.innerHTML = "확인";
       btn.addEventListener("click", function (e) {
         let body = {

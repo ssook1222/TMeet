@@ -1,4 +1,4 @@
-h3{
+#title{
     display: inline-block;
     margin: 2% 30%;
 }
@@ -18,7 +18,18 @@ h3{
     align-items: center;
 }
 
-button{
+#resultButton1{
+    margin: 5%;
+    width: 15vh;
+    height: 8vh;
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#resultButton1{
     margin: 5%;
     width: 15vh;
     height: 8vh;

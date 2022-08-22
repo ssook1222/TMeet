@@ -164,7 +164,7 @@ function TimeResult() {
       <div className="App">
         <NavBar></NavBar>
       </div>
-        <h3>사용자들의 가능한 시간대를 취합한 결과를 확인해보세요.</h3>
+        <h3 id="title">사용자들의 가능한 시간대를 취합한 결과를 확인해보세요.</h3>
         <div id="content">
       <div className="wrap">
         <TimeTableMerge />

@@ -28,5 +28,10 @@ h3{
    display: block;
     margin: 0 auto;
     width: 80px;
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
