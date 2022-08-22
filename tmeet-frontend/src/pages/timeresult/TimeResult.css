@@ -1,2 +1,38 @@
+h3{
+    display: inline-block;
+    margin: 2% 30%;
+}
+
+#content{
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+}
+
+.wrap{
+    margin: 0;
+}
+
+#buttonwrap2{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+button{
+    margin: 5%;
+    width: 15vh;
+    height: 8vh;
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.userbutton{
+    width: 10vh;
+    height: 5vh;
+}
+
 
 

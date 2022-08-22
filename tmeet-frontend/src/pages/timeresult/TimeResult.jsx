@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import NavBar from '../components/navigationBar/NavBar';
 import TimeTableMerge from '../components/timeTableMerge/TimeTableMerge';
 import './TimeResult.css';
@@ -6,10 +6,9 @@ import axios from "axios";
 
 function TimeResult() {
     const rowCnt = 11;
-    const columnCnt = 7;
-    const dayArray = ['월', '화', '수', '목', '금', '토', '일'];
-
+    let columnCnt = 0;
     const userCnt = 4;
+    let theadArray = new Array();
 
     let user0 = new Array();
     let user1 = new Array();
@@ -17,47 +16,70 @@ function TimeResult() {
     let user3 = new Array();
 
     let userArray = new Array(user0, user1, user2, user3);
+    let resultButton2Clicked = false;
 
-    let cellArray = new Array(columnCnt);   //2차원 배열 생성
-    for(let j = 0; j < columnCnt; j++)
-        cellArray[j] = new Array(rowCnt);
+    const loadThead = async () => {
+        await axios.get('/api/meeting',
+            {params: {meeting_id: 5}}
+        )
+            .then(function (response) {
+                console.log(JSON.parse(response.data));
+                theadArray = JSON.parse(response.data);
+                console.log(theadArray);
+            })
+            .catch(() => {
+                console.log('fail');
+            })
+        columnCnt = theadArray.length;
+    }
 
-    for(let k = 0; k < rowCnt; k++)    //2차원 배열 초기화
-        for(let j = 0; j < columnCnt; j++) {
-            cellArray[j][k] = 0;
-        }
-
-    async function loadTable () {
-        for(let i=0; i < userCnt; i++) {
+    async function loadTable() {
+        for (let i = 0; i < userCnt; i++) {
             await axios.get('/api/time', {
                 params: {
-                    time_id: i+1
+                    time_id: i + 1
                 }
             })
                 .then(function (response) {
                     let timetable = JSON.parse(response.data);
-                    for(let j=0; j < dayArray.length; j++)
-                        userArray[i].push(timetable[dayArray[j]].split('.'));
+                    console.log(timetable);
+                    for (let j = 0; j < columnCnt; j++)
+                        userArray[i].push(timetable[theadArray[j]].split('.'));
+                    console.log(userArray);
                 })
                 .catch(() => {
                     console.log('fail');
                 })
+
         }
+
         markTable();
+
     }
 
     function markTable() {
+        let cellArray = new Array(columnCnt);   //2차원 배열 생성
+        for(let j = 0; j < columnCnt; j++)
+            cellArray[j] = new Array(rowCnt);
+
+        for(let k = 0; k < rowCnt; k++)    //2차원 배열 초기화
+            for(let j = 0; j < columnCnt; j++) {
+                cellArray[j][k] = 0;
+            }
 
         let tdArray = document.getElementsByClassName('ttdm');
-
+        console.log(tdArray);
         for (let i = 0; i < userCnt; i++) {
             let user = userArray[i];
             for (let j = 0; j < columnCnt; j++)
                 for (let k = 0; k < rowCnt; k++) {
-                    if (user[j][k] == '1')
+                    console.log(j,k);
+                    console.log(user);
+                    if (user[j][k] === '1')
                         cellArray[j][k]++;
                 }
         }
+        console.log(cellArray);
 
         for (let k = 0; k < rowCnt; k++)
             for (let j = 0; j < columnCnt; j++) {
@@ -86,34 +108,73 @@ function TimeResult() {
             }
     }
 
-    function showResult() {
-        let userArray = ['사용자1', '사용자2', '사용자3', '사용자4'];
-        let n = userArray.length;
-        let result = document.getElementById('resultButton');
-        let parent = result.parentElement;
-        for (let i = 0; parent.childElementCount <= n; i++) {
-            let child = document.createElement('button');
-            child.innerHTML = userArray[i];
-            parent.appendChild(child);
+    function showUserResult() {
+        let tdArray = document.getElementsByClassName('ttdm');
+        let userNicknameArray = ['사용자1', '사용자2', '사용자3', '사용자4'];
+        let resultButton1 = document.getElementById('resultButton1');
+        let parent = resultButton1.parentElement;
+        function showUser(i){
+            console.log(i);
+            for(let j = 0; j < tdArray.length; j++)
+                tdArray[j].style.backgroundColor = 'lightgrey';
+
+            let user = userArray[i];
+            console.log(userArray[i]);
+            for (let k = 0; k < rowCnt; k++)
+                for (let j = 0; j < columnCnt; j++) {
+                    let tdIndex = k * columnCnt + j;
+                    console.log(j,k);
+                    if (user[j][k] == '1')
+                        tdArray[tdIndex].style.backgroundColor = '#90EEF7';
+                }
         }
+
+        if(resultButton2Clicked === false) {
+            for (let i = 0; i < userCnt; i++) {
+                let child = document.createElement('button');
+                child.innerHTML = userNicknameArray[i];
+                child.className = "userbutton";
+                child.addEventListener("click", function (e) {
+                    showUser(i)
+                });
+
+                parent.appendChild(child);
+            }
+        }
+        resultButton2Clicked = true;
     }
 
+    function showAllResult(){
+        let tdArray = document.getElementsByClassName('ttdm');
+        for(let j = 0; j < tdArray.length; j++)
+            tdArray[j].style.backgroundColor = 'lightgrey';
 
-    loadTable();
+        loadThead();
+        loadTable();
+    }
+
+    useEffect(() => {
+        loadThead();
+        loadTable();
+    },[]);
+
 
         return (
     <div>
       <div className="App">
         <NavBar></NavBar>
-          <h3>사용자들의 가능한 시간대를 취합한 결과를 확인해보세요.</h3>
       </div>
-
-      <div className="area">
-        <TimeTableMerge></TimeTableMerge>
+        <h3>사용자들의 가능한 시간대를 취합한 결과를 확인해보세요.</h3>
+        <div id="content">
+      <div className="wrap">
+        <TimeTableMerge />
       </div>
-
-      <div className="area" style={{float: "right"}}>
-        <button id="resultButton" onClick={showResult}>사용자별 결과보기</button>
+      <div className="wrap" >
+          <button id="resultButton1" onClick={showAllResult}>전체 결과보기</button>
+          <div id="buttonwrap2">
+              <button id="resultButton2" onClick={showUserResult}>사용자별 결과</button>
+          </div>
+      </div>
       </div>
     </div>
   );
