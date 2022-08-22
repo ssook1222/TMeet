@@ -41,8 +41,14 @@
 }
 
 .userbutton{
+    margin: 2%;
     width: 10vh;
     height: 5vh;
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 
