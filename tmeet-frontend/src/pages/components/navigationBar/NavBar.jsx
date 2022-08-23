@@ -42,7 +42,11 @@ const NavBar = () => {
         <AppBar position="static" style={{backgroundColor:"#71C9CE"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />*/}
+                    <img
+                        style={{width:"30px", height:"30px", marginRight:"10px"}}
+                        sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+                        src='img/tmeet-logo.jpg'/>
                     <Typography
                         variant="h6"
                         noWrap
@@ -98,7 +102,7 @@ const NavBar = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    {/*<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />*/}
                     <Typography
                         variant="h5"
                         noWrap
