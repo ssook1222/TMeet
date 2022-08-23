@@ -83,8 +83,39 @@ export class SubwayController{
         }
         request.get(options, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-                res.end(body.replace(reg,''));
+                let data = JSON.parse(body.replace(reg,''))
+                return res.status(200).send({"data":data.items})
+            } else {
+                res.status(response.statusCode).end();
+                console.log('error = ' + response.statusCode);
+            }
+        })
+
+    }
+
+    static subwayTime = async (req, res) => {
+        var start = req.params.start;
+        var goal = req.params.goal;
+        console.log(start)
+        console.log(goal)
+        var clientID = "pnq5016zbg";
+        var clientSecret = '2hVxlTnBHoPSkNWw6WecSm7RTxeoKxoPFFo67h87';
+        var api_url = 'https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start='+start+'&goal='+goal
+
+        const request = require('request');
+        var options = {
+            url: api_url,
+            headers: {'X-NCP-APIGW-API-KEY-ID': clientID, 'X-NCP-APIGW-API-KEY': clientSecret}
+        }
+        request.get(options, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var data = JSON.parse(body)
+                if(data.route){
+                    var time = data.route.traoptimal[0].summary.duration
+                    time = time / 60000
+                    return res.status(200).send({time:time})
+                }
+                console.log(data)
             } else {
                 res.status(response.statusCode).end();
                 console.log('error = ' + response.statusCode);

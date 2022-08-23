@@ -15,8 +15,17 @@ th{
     border: 10px solid white;
 }
 
+#ttwrap{
+    display: flex;
+    justify-content: center;
+}
 
-.tt{
+#tt1{
+    display: inline-block;
+
+}
+
+#tt2{
     display: inline-block;
 
 }
