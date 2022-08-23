@@ -10,6 +10,9 @@ const SubwayMain = () => {
 
     const [lat, setLat] = useState(0.0)
     const [lng, setLng] = useState(0.0)
+    var start = '126.852912,37.574028'
+    var goal
+    const [time, setTime] = useState("불러오는 중입니다.")
     const [subway_name,setSubway_name] = useState("불러오는 중입니다...")
 
     useEffect(() => {
@@ -35,6 +38,11 @@ const SubwayMain = () => {
                 setLng(findResult.data.res_lng)
                 setSubway_name(findResult.data.subway_name)
 
+                goal = findResult.data.res_lng+','+findResult.data.res_lat
+
+                console.log(findResult.data.res_lat)
+                console.log(findResult.data.res_lng)
+
                 let map = null
                 const initMap = () => {
                     map = new naver.maps.Map('map', {
@@ -48,15 +56,30 @@ const SubwayMain = () => {
                             )
                         })
                     });
-
                 }
                 initMap()
+                findTime()
+                }
             } catch (e){
                 console.log(e);
             }
         }
         find()
     };
+    const findTime = () => {
+
+        const duration = async () => {
+            try{
+                const findResult = await axios.get('/api/subway-time/'+start+'/'+goal);
+                console.log(findResult)
+                setTime(Math.round(findResult.data.time))
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
+        duration()
+    }
 
     return(
         <div style={{
@@ -67,7 +90,8 @@ const SubwayMain = () => {
         >
             <NavBar></NavBar>
             <h2 style={{marginTop:"50px",textAlign:"center"}}><b>모임 중간 지하철역</b> 추천 결과입니다.</h2>
-            <h3 style={{marginTop:"50px",textAlign:"center", marginBottom:"50px"}}> 추천 결과 : <b>{subway_name}</b></h3>
+            <h3 style={{marginTop:"50px",textAlign:"center", marginBottom:"10px"}}> 추천 결과 : <b>{subway_name}</b></h3>
+            <h3 style={{marginTop:"10px",textAlign:"center", marginBottom:"50px"}}>예상 소요 시간 : <b>{time}</b>분</h3>
             <div style={{width:"80%", display:"block", margin:"auto"}}>
                 <div id="map" style={mapStyle}/>
                 <h3 style={{textAlign:"center", marginBottom:"30px"}}>
@@ -76,7 +100,6 @@ const SubwayMain = () => {
             </div>
         </div>
     );
-
 }
 
 export default SubwayMain;

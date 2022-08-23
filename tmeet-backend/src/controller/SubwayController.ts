@@ -106,14 +106,16 @@ export class SubwayController{
         var options = {
             url: api_url,
             headers: {'X-NCP-APIGW-API-KEY-ID': clientID, 'X-NCP-APIGW-API-KEY': clientSecret}
-
         }
         request.get(options, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var data = JSON.parse(body)
-                var time = data.route.traoptimal[0].summary.duration
-                time = time / 60000
-                return res.status(200).send({time:time})
+                if(data.route){
+                    var time = data.route.traoptimal[0].summary.duration
+                    time = time / 60000
+                    return res.status(200).send({time:time})
+                }
+                console.log(data)
             } else {
                 res.status(response.statusCode).end();
                 console.log('error = ' + response.statusCode);
