@@ -19,6 +19,7 @@ routes.get('/meeting', MeetingController.loadThead);
 routes.post('/meeting', MeetingController.addMeeting);
 routes.post('/subway-test',SubwayController.subwayTest);
 routes.post('/subway',SubwayController.findSubway);
+routes.get('/subway-time/:start/:goal',SubwayController.subwayTime);
 
 routes.get('/weather',WeatherController.weatherLookRequest);
 
