@@ -19,7 +19,8 @@ const SubwayMain = () => {
 
     const mapStyle = {
         width: '100%',
-        height: '22vw'
+        height: '30vw',
+        marginBottom: '30px'
     }
 
     const findSubway = () => {
@@ -35,7 +36,6 @@ const SubwayMain = () => {
                 setSubway_name(findResult.data.subway_name)
 
                 let map = null
-                let marker = null
                 const initMap = () => {
                     map = new naver.maps.Map('map', {
                         center: new naver.maps.LatLng(findResult.data.res_lat, findResult.data.res_lng),
@@ -60,25 +60,20 @@ const SubwayMain = () => {
 
     return(
         <div style={{
-            backgroundColor:"#F8FFFF",
+            backgroundColor: "#F8FFFF",
             width: "100%",
-            height: "100vh"}}>
+            height: "200vh",
+        }}
+        >
             <NavBar></NavBar>
-            <h2 style={{marginTop:"50px",marginBottom:"-10px",textAlign:"center"}}><b>모임 중간 장소</b> 추천 결과입니다.</h2>
-            <h3 style={{marginTop:"50px",marginBottom:"-170px",textAlign:"center"}}> 추천 결과 : <b>{subway_name}</b></h3>
-            <Container
-                component="main"
-                maxWidth="lg"
-                style={{
-                    display:'flex',
-                    height:'100%',
-                    alignItems: 'center'
-                }}
-            >
-                <CssBaseline />
-                    <div id="map" style={mapStyle} />
-            </Container>
-            <SearchList></SearchList>
+            <h2 style={{marginTop:"50px",textAlign:"center"}}><b>모임 중간 지하철역</b> 추천 결과입니다.</h2>
+            <h3 style={{marginTop:"50px",textAlign:"center", marginBottom:"50px"}}> 추천 결과 : <b>{subway_name}</b></h3>
+            <div style={{width:"80%", display:"block", margin:"auto"}}>
+                <div id="map" style={mapStyle}/>
+                <h3 style={{textAlign:"center", marginBottom:"30px"}}>
+                    <b>추천 모임 장소</b> 결과 리스트입니다.</h3>
+                <SearchList></SearchList>
+            </div>
         </div>
     );
 
