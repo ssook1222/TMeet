@@ -59,6 +59,7 @@ const SubwayMain = () => {
                 }
                 initMap()
                 findTime()
+                }
             } catch (e){
                 console.log(e);
             }
@@ -99,7 +100,6 @@ const SubwayMain = () => {
             </div>
         </div>
     );
-
 }
 
 export default SubwayMain;

@@ -107,7 +107,6 @@ export class SubwayController{
             url: api_url,
             headers: {'X-NCP-APIGW-API-KEY-ID': clientID, 'X-NCP-APIGW-API-KEY': clientSecret}
         }
-
         request.get(options, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 var data = JSON.parse(body)

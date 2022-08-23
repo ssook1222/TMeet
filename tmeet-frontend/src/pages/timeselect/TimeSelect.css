@@ -2,15 +2,36 @@ button{
     background-color: white;
 }
 
+h3{
+    display: block;
+    text-align: center;
+    margin: 3% auto;
+}
+
 .select{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: #F4FDFD;
+    margin: 0% 20% 5% 20%;
 }
 
 .regularly{
     margin: 30% auto;
 }
 
-.not{
+.notRegularly{
     margin: 30% auto;
 }
+
+
+#submit{
+   display: block;
+    margin: 0 auto;
+    width: 80px;
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+

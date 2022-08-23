@@ -21,8 +21,27 @@ th{
     border: 10px solid white;
 }
 
+#ttwrap{
+    display: flex;
+    justify-content: center;
+}
 
-.tt{
+#tt1{
     display: inline-block;
+}
 
+#tt2{
+    display: inline-block;
+}
+
+#submitButton{
+    display: block;
+    width: 10vh;
+    height: 5vh;
+    margin: 2%;
+    background-color: #a7d4d4;
+    color: white;
+    border-radius: 5px;
+    border-color: #a7d4d4;
+    font-family: 'Noto Sans KR', sans-serif;
 }
