@@ -16,6 +16,9 @@ import MapTest from "./pages/sample/MapSample"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
 import MeetingChoice from "./pages/meetingCheck/meetingChoice/MeetingChoice";
 
+import Checkout from "./pages/sample/MeetingSample/Checkout";
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +39,8 @@ function App() {
           <Route exact path="/map-test" element={<MapTest />}></Route>
           <Route exact path="/meeting-check" element={<MeetingCheck />}></Route>
           <Route exact path="/meeting-choice" element={<MeetingChoice />}></Route>
+
+          <Route exact path="/meeting-test" element={<Checkout />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
