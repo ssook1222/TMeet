@@ -1,149 +1,100 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {TiWeatherSunny,TiWeatherDownpour,TiWeatherSnow,TiWeatherCloudy} from "react-icons/ti";
+import UmbrellaIcon from '@mui/icons-material/Umbrella';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import WbCloudyIcon from '@mui/icons-material/WbCloudy';
 
-//weathercontroller에서 날씨 가져오기
+function weatherIcon() {
 
-var weatherList =
-    [
-        {date: "8월 13일", weather: "", rain : "30.0~50.0mm", snow : "강수없음"},
-        {date: "8월 14일", weather: "", rain : "5.0mm", snow : "10.0mm"},
-        {date: "8월 15일", weather: "맑음", rain : "강수없음", snow : "적설없음"},
-        {date: "8월 16일", weather: "", rain : "강수없음", snow : "10.0mm"},
-        {date: "8월 17일", weather: "", rain : "50.0mm", snow : "강수없음"},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    ]
+    var weatherLst1 = [];
+    var weatherLst2 = [];
 
-window.onload = function () {
-    for(let j = 0 ; j<weatherList.length+1 ; j++){
-        if(weatherList[j] == null){
-            document.getElementById("w"+j).style.display = "none"
+    async function getWeather() {
+        try{
+            await axios.get('/api/weather')
+                .then(function (response){
+                    weatherLst1.push(response.data);
+                });
+        } catch (e){
+            console.log(e);
+        }
+        findWeather()
+    }
+
+    function findWeather() {
+        weatherLst2 = weatherLst1.flat();
+        let resultId = document.getElementById('weather');
+        let parent = resultId.parentElement;
+        for (let i = 0; parent.childElementCount <=weatherLst2.length; i++) {
+
+            let weatherDate = document.createElement('div');
+            weatherDate.innerHTML = weatherLst2[i].date;
+            parent.appendChild(weatherDate);
+
+            //Object 에러
+            // let weatherIcon = document.createElement('span');
+            // weatherIcon.innerHTML = <span className="material-icons"> wb_sunny </span>;
+            // parent.appendChild(weatherIcon);
         }
     }
-}
-
-const weatherIcon = () =>{
-    var i = 0;
-    var iconSize = "4rem"
-    var rainlength = weatherList[i].rain.length
-    var snowlength = weatherList[i].snow.length
-    var ssss = weatherList[2].rain.length
-    var ssss1 = weatherList[2].rain
-
-    const selectIcon1 = () => {
-        if (weatherList[i].weather == "맑음") {
-            return <TiWeatherSunny size={iconSize} color="#46B3B9"/>;
-        } if (weatherList[i].weather == "구름많고 비" || weatherList[i].weather == "구름많고 소나기" || weatherList[i].weather == "흐리고 비" ||weatherList[i].weather == "흐리고 소나기" ||
-            (weatherList[i].weather == "" && weatherList[i].rain != "강수없음" &&  weatherList[i].snow == "강수없음") || (weatherList[i].weather == "" && weatherList[i].rain != "강수없음" &&  weatherList[i].snow != "적설없음")) {
-            return <TiWeatherDownpour size={iconSize} color="#46B3B9"/>;
-        } if (weatherList[i].weather == "구름많고 눈" || weatherList[i].weather == "흐리고 눈" ||
-            (weatherList[i].weather == "" && weatherList[i].rain == "강수없음" &&  weatherList[i].snow != "적설없음")) {
-            return <TiWeatherSnow size={iconSize}color="#46B3B9"/>;
-        } if (weatherList[i].weather == "구름많음" || weatherList[i].weather == "흐림") {
-            return <TiWeatherCloudy size={iconSize} color="#46B3B9"/>;
-        } if (weatherList[i].rain != "강수없음" && weatherList[i].snow != "적설없음"){
-            return null;
-        } else {
-            return null;
-        }
-    }
-    const selectIcon2 = () => {
-        i++;
-        if (weatherList[i].weather == "맑음") {
-            return <TiWeatherSunny size={iconSize} color="#46B3B9"/>;
-        } if (weatherList[i].weather == "구름많고 비" || weatherList[i].weather == "구름많고 소나기" || weatherList[i].weather == "흐리고 비" ||weatherList[i].weather == "흐리고 소나기" ||
-                (weatherList[i].weather == "" && weatherList[i].rain != "강수없음" &&  weatherList[i].snow == "강수없음") || (weatherList[i].weather == "" && weatherList[i].rain != "강수없음" &&  weatherList[i].snow != "적설없음")) {
-            return <TiWeatherDownpour size={iconSize} color="#46B3B9"/>;
-        } if (weatherList[i].weather == "구름많고 눈" || weatherList[i].weather == "흐리고 눈" ||
-            (weatherList[i].weather == "" && weatherList[i].rain == "강수없음" &&  weatherList[i].snow != "적설없음")) {
-            return <TiWeatherSnow size={iconSize}color="#46B3B9"/>;
-        } if (weatherList[i].weather == "구름많음" || weatherList[i].weather == "흐림") {
-            return <TiWeatherCloudy size={iconSize} color="#46B3B9"/>;
-        } if (weatherList[i].rain != "강수없음" && weatherList[i].snow != "적설없음"){
-            return null;
-        } else {
-            return null;
-        }
-    }
-    return(
-        <body>
-        <div style={{display : "flex", justifyContent : "space-between"}}>
-            <div id = "w0">
-                {weatherList[0].date}
-                {selectIcon1()}
-            </div>
-            <div id = "w1">
-                {weatherList[1].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w2">
-                {weatherList[2].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w3">
-                {weatherList[3].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w4">
-                {weatherList[4].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w5">
-                {weatherList[5].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w6">
-                {weatherList[6].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w7">
-                {weatherList[7].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w8">
-                {weatherList[8].date}
-                {selectIcon2()}
-            </div>
-            <div id = "w9">
-                {weatherList[9].date}
-                {selectIcon2()}
-            </div>
-        </div>
-        </body>
-    )
-}
-
-const WeatherApp = () => {
-    // 전체 store에서 playerReducer 에서 사용중인 players 데이터를 가져온다.
-    // const players = useSelector(state => state.playerReducer.players);
-    // const dispatch = useDispatch();
-
-    //Weathercontroller에서 데이터를 가져와야함
-    // const submit = async () => {
-    //         try{
-    //             body.timetable = JSON.stringify(body.timetable);
-    //             console.log(body.timetable);
-    //             const submitResult = await axios.post('/api/weather',body);
-    //             console.log(submitResult);
-    //             //window.location.href="/timeresult";
-    //         } catch (e){
-    //             console.log(e);
-    //         }
-    //     }
+    getWeather();
 
     return (
-        <body>
-        <div style={{color : "#46B3B9"}}>
-            {weatherIcon()}
+        <div style={{display: "flex"}}>
+            <div id="weather" onLoad={findWeather}></div>
         </div>
-        </body>
-    )
+    );
 }
 
-export default WeatherApp;
+
+export default weatherIcon;
+
+
+
+// var i = 0;
+// const selectIcon = () => {
+//     if (weatherList[i].weather == "맑음" || (weatherList[i].rain ="강수없음" && weatherList[i].snow == "적설없음")) {
+//         return(
+//             <body>
+//             <div>
+//                 {weatherList[i].date}
+//                 <WbSunnyIcon color="#46B3B9" style={{fontSize : "3.5rem"}}/>
+//             </div>
+//             </body>
+//         )
+//     } if (weatherList[i].weather == "구름많고 비" || weatherList[i].weather == "구름많고 소나기" || weatherList[i].weather == "흐리고 비" ||weatherList[i].weather == "흐리고 소나기" ||
+//         (weatherList[i].weather == '' && weatherList[i].rain != "강수없음" &&  weatherList[i].snow == "강수없음") || (weatherList[i].weather == '' && weatherList[i].rain != "강수없음" &&  weatherList[i].snow != "적설없음")) {
+//         return(
+//             <body>
+//             <div>
+//                 {weatherList[i].date}
+//                 <UmbrellaIcon color="#46B3B9" style={{fontSize : "3.5rem"}}/>
+//             </div>
+//             </body>
+//         )
+//     } if (weatherList[i].weather == "구름많고 눈" || weatherList[i].weather == "흐리고 눈" ||
+//         (weatherList[i].weather == '' && weatherList[i].rain == "강수없음" &&  weatherList[i].snow != "적설없음")) {
+//         return(
+//             <body>
+//             <div>
+//                 {weatherList[i].date}
+//                 <AcUnitIcon color="#46B3B9" style={{fontSize : "3.5rem"}}/>
+//             </div>
+//             </body>
+//         )
+//     } if (weatherList[i].weather == "구름많음" || weatherList[i].weather == "흐림") {
+//         return(
+//             <body>
+//             <div>
+//                 {weatherList[i].date}
+//                 <WbCloudyIcon color="#46B3B9" style={{fontSize : "3.5rem"}}/>
+//             </div>
+//             </body>
+//         )
+//     } if (weatherList[i].weather == '' && weatherList[i].rain != "강수없음" && weatherList[i].snow != "적설없음"){
+//         return null;
+//     } else {
+//         return null;
+//     }
+// }

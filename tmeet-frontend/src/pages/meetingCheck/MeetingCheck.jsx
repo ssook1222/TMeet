@@ -3,12 +3,31 @@ import NavBar from "../components/navigationBar/NavBar";
 import './MeetingCheck.css';
 import WeatherApp from "../components/weather/Weather";
 import Box from "@mui/material/Box";
+import weatherIcon from "../components/weather/Weather";
 
-let now = new Date();
+let count = 0;
+var weatherList =
+    [
+        { date: '20220815', weather: '', rain: '강수없음', snow: '적설없음' },
+        { date: '20220816', weather: '', rain: '강수없음', snow: '적설없음' },
+        { date: '20220817', weather: '', rain: '강수없음', snow: '적설없음' },
+        { date: '20220818', weather: '구름많음', rain: '', snow: '' },
+        { date: '20220819', weather: '흐리고 비', rain: '', snow: '' },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+    ];
 
-let select = "모임 날짜 및 시간",
-    startdate1 = "YYYY-MM-DD AM/PM 00:00",
-    enddate1 = "YYYY-MM-DD AM/PM 00:00";
+for(let i = 0;i<weatherList.length ; i++){
+    if(weatherList[i].date == null){
+        count++;
+    }
+}
+
+let select = "모임 날짜 및 시간", startdate1 = weatherList[0].date, enddate1 = weatherList[count-2].date;
 
 function CheckApp() {
     
@@ -48,7 +67,7 @@ function CheckApp() {
                                 width : '40vh',
                                 height : '15vh'
                             }}>
-                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
+                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br> ~ {enddate1}</h4>
                         </Box>
                         <div style={{margin : "0.5vh"}}></div>
                         <Box className="weatherBox"
@@ -61,7 +80,7 @@ function CheckApp() {
                                 height : 'auto',
                                 overflow : "scroll"
                             }}>
-                            <WeatherApp></WeatherApp>
+                            <weatherIcon></weatherIcon>
                         </Box>
                     </div>
                 </div>
@@ -85,7 +104,7 @@ function CheckApp() {
                                 width : '40vh',
                                 height : '15vh'
                             }}>
-                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
+                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br> ~ {enddate1}</h4>
                         </Box>
                         <div style={{margin : "0.5vh"}}></div>
                         <Box className="weatherBox"
@@ -98,7 +117,7 @@ function CheckApp() {
                                  height : 'auto',
                                  overflow : "scroll"
                              }}>
-                            <WeatherApp></WeatherApp>
+                            <weatherIcon></weatherIcon>
                         </Box>
                     </div>
                 </div>
@@ -122,7 +141,7 @@ function CheckApp() {
                                 width : '40vh',
                                 height : '15vh'
                             }}>
-                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br>{enddate1}</h4>
+                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br> ~ {enddate1}</h4>
                         </Box>
                         <div style={{margin : "0.5vh"}}></div>
                         <Box className="weatherBox"
@@ -135,7 +154,7 @@ function CheckApp() {
                                  height : 'auto',
                                  overflow : "scroll"
                              }}>
-                            <WeatherApp></WeatherApp>
+                            <weatherIcon></weatherIcon>
                         </Box>
                     </div>
                 </div>
