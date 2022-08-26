@@ -15,7 +15,7 @@ import SubwayMain from "./pages/place/SubwayMain";
 import MapTest from "./pages/sample/MapSample"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
 import MeetingChoice from "./pages/meetingCheck/meetingChoice/MeetingChoice";
-import MeetingMake from "./pages/meetingMake/meetingMake";
+import MeetingMake from "./pages/meetingMake/MeetingMake";
 
 import Checkout from "./pages/sample/MeetingSample/Checkout";
 

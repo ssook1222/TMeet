@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../components/navigationBar/NavBar";
-import MeetingFirst from "./meetingFirst";
+import MeetingFirst from "./MeetingFirst";
 
 const MeetingMake = () => {
     return(

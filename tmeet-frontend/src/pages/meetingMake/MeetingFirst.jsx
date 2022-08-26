@@ -12,9 +12,9 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import MeetingSecond from "./meetingSecond.tsx";
-import MeetingThird from "./meetingThird"
-import MeetingFourth from "./meetingFourth"
+import MeetingSecond from "./MeetingSecond.tsx";
+import MeetingThird from "./MeetingThird"
+import MeetingFourth from "./MeetingFourth"
 
 const steps = ['모임 참가자 선택', '모임 시간 선택', '모임 장소 추천'];
 
