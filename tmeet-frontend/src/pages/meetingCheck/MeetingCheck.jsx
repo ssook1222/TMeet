@@ -1,9 +1,8 @@
 import React from "react";
 import NavBar from "../components/navigationBar/NavBar";
 import './MeetingCheck.css';
-import WeatherApp from "../components/weather/Weather";
 import Box from "@mui/material/Box";
-import weatherIcon from "../components/weather/Weather";
+import WeatherIcon from "../components/weather/WeatherRe.tsx";
 
 let count = 0;
 var weatherList =
@@ -80,7 +79,7 @@ function CheckApp() {
                                 height : 'auto',
                                 overflow : "scroll"
                             }}>
-                            <weatherIcon></weatherIcon>
+                            <WeatherIcon></WeatherIcon>
                         </Box>
                     </div>
                 </div>
@@ -117,7 +116,7 @@ function CheckApp() {
                                  height : 'auto',
                                  overflow : "scroll"
                              }}>
-                            <weatherIcon></weatherIcon>
+                            <WeatherIcon></WeatherIcon>
                         </Box>
                     </div>
                 </div>
@@ -154,7 +153,7 @@ function CheckApp() {
                                  height : 'auto',
                                  overflow : "scroll"
                              }}>
-                            <weatherIcon></weatherIcon>
+                            <WeatherIcon></WeatherIcon>
                         </Box>
                     </div>
                 </div>

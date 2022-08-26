@@ -1,54 +1,66 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+import * as React from 'react';
 import axios from 'axios';
 import UmbrellaIcon from '@mui/icons-material/Umbrella';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import WbCloudyIcon from '@mui/icons-material/WbCloudy';
 
-function weatherIcon() {
 
-    var weatherLst1 = [];
-    var weatherLst2 = [];
+function WeatherIcon() {
+
+    var dayList = [];
+    var weatherList = [];
+
+    useEffect(() => {
+        getWeather()
+    }, []);
 
     async function getWeather() {
         try{
             await axios.get('/api/weather')
                 .then(function (response){
-                    weatherLst1.push(response.data);
+                    dayList.push(response.data);
                 });
         } catch (e){
             console.log(e);
         }
-        findWeather()
-    }
+        // findWeather()
+        console.log(dayList)
 
-    function findWeather() {
-        weatherLst2 = weatherLst1.flat();
-        let resultId = document.getElementById('weather');
-        let parent = resultId.parentElement;
-        for (let i = 0; parent.childElementCount <=weatherLst2.length; i++) {
+        for (let i=0; dayList[0].length; i++){
 
-            let weatherDate = document.createElement('div');
-            weatherDate.innerHTML = weatherLst2[i].date;
-            parent.appendChild(weatherDate);
-
-            //Object 에러
-            // let weatherIcon = document.createElement('span');
-            // weatherIcon.innerHTML = <span className="material-icons"> wb_sunny </span>;
-            // parent.appendChild(weatherIcon);
         }
     }
-    getWeather();
+
+    // function findWeather() {
+    //     weatherLst2 = weatherLst1.flat();
+    //     let resultId = document.getElementById('weather');
+    //     let parent = resultId.parentElement;
+    //     for (let i = 0; parent.childElementCount <=weatherLst2.length; i++) {
+    //
+    //         let weatherDate = document.createElement('div');
+    //         console.log(weatherLst2[i].date)
+    //         weatherDate.innerHTML = weatherLst2[i].date;
+    //         parent.appendChild(weatherDate);
+    //
+    //         //Object 에러
+    //         let weatherIcon = document.createElement('span');
+    //         weatherIcon.innerHTML = <span className="material-icons"> wb_sunny </span>;
+    //         // weatherIcon.innerHTML = <span className="material-icons"> wb_sunny </span>;
+    //         parent.appendChild(weatherIcon);
+    //     }
+    // }
 
     return (
         <div style={{display: "flex"}}>
-            <div id="weather" onLoad={findWeather}></div>
+            {/*<div id="weather" onLoad={findWeather}></div>*/}
         </div>
     );
 }
 
 
-export default weatherIcon;
+export default WeatherIcon;
 
 
 
