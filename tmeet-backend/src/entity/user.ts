@@ -8,7 +8,7 @@ import {
     UpdateDateColumn
 } from "typeorm";
 import {Meeting} from "./meeting";
-import {Time} from "./time"
+import {Comment} from "./Comment";
 
 @Entity()
 export class User {
@@ -27,9 +27,9 @@ export class User {
     @Column({length: 15})
     subway: string;
 
-    @ManyToOne(() => Meeting, meeting => meeting.meeting_id)
+    @ManyToOne(type => Meeting, meeting => meeting.meeting_id)
     meeting_id: Meeting;
 
-    @OneToMany(() => Time, time => time.time_id)
-    time_id: Time;
+    @OneToMany(() => Comment, comment => comment.id)
+    comment_array: Comment[];
 }
