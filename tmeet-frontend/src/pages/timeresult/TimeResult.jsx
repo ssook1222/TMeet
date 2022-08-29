@@ -18,7 +18,8 @@ function TimeResult() {
     let userArray = new Array(user0, user1, user2, user3);
     let resultButton2Clicked = false;
 
-    const loadThead = async () => {
+    //meeting_id로 thead 가져오기
+    async function loadThead(){
         await axios.get('/api/meeting',
             {params: {meeting_id: 5}}
         )
@@ -31,8 +32,10 @@ function TimeResult() {
                 console.log('fail');
             })
         columnCnt = theadArray.length;
+        loadTable();
     }
 
+    //가져온 json을 2차원 배열로 만들기
     async function loadTable() {
         for (let i = 0; i < userCnt; i++) {
             await axios.get('/api/time', {
@@ -56,7 +59,7 @@ function TimeResult() {
         markTable();
 
     }
-
+    //테이블에 색깔, 숫자 표시
     function markTable() {
         let cellArray = new Array(columnCnt);   //2차원 배열 생성
         for(let j = 0; j < columnCnt; j++)
@@ -108,6 +111,7 @@ function TimeResult() {
             }
     }
 
+    //사용자별 표시
     function showUserResult() {
         let tdArray = document.getElementsByClassName('ttdm');
         let userNicknameArray = ['사용자1', '사용자2', '사용자3', '사용자4'];
@@ -144,18 +148,17 @@ function TimeResult() {
         resultButton2Clicked = true;
     }
 
+    //전체 표시
     function showAllResult(){
         let tdArray = document.getElementsByClassName('ttdm');
         for(let j = 0; j < tdArray.length; j++)
             tdArray[j].style.backgroundColor = 'lightgrey';
 
         loadThead();
-        loadTable();
     }
 
     useEffect(() => {
-        loadThead();
-        loadTable();
+    loadThead();
     },[]);
 
 
@@ -164,7 +167,7 @@ function TimeResult() {
       <div className="App">
         <NavBar></NavBar>
       </div>
-        <h3 id="title">사용자들의 가능한 시간대를 취합한 결과를 확인해보세요.</h3>
+        <h3 id="h3">사용자들의 가능한 시간대를 취합한 결과를 확인해보세요.</h3>
         <div id="content">
       <div className="wrap">
         <TimeTableMerge />
