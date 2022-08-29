@@ -15,6 +15,6 @@ export class Meeting{
     @Column('simple-array')
     thead: string[];
 
-    @OneToMany(type => User, user => user.id)
+    @OneToMany(() => User, user => user.id)
     user_array: User[];
 }

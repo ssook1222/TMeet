@@ -7,9 +7,10 @@ const TimeTable = () => {
   let dragging = false;
   let startTd = 0,
       curTd = 0;
-  let rowCnt = 11;
+  let rowCnt = 22;
   let columnCnt = 0;
 
+  //meeting_id에 따라 thead 가져와서 테이블 생성
   const appendTable = () => {
     useEffect(()=> {
       const loadThead = async () => {
@@ -30,38 +31,40 @@ const TimeTable = () => {
     },[]);
     columnCnt = theadArray.length;
 
+    //테이블 생성
     if(columnCnt != 0) {
       let table = document.createElement('table');
       let thead = document.createElement('thead');
       console.log(columnCnt);
       for (let j = 0; j < columnCnt; j++) {
-        let th = document.createElement('th');
+        let tth = document.createElement('th');
         console.log(theadArray[j]);
-        th.innerHTML = theadArray[j];
-        thead.appendChild(th);
+        tth.className='tth';
+        tth.innerHTML = theadArray[j];
+        thead.appendChild(tth);
       }
       table.appendChild(thead);
 
       for (let i = 0; i < rowCnt; i++) {
         let tr = document.createElement('tr');
         for (let j = 0; j < columnCnt; j++) {
-          let td = document.createElement('td');
-          td.className = 'ttd';
-          td.addEventListener(
+          let ttd = document.createElement('td');
+          ttd.className = 'ttd';
+          ttd.addEventListener(
               'mousedown',
               function (e) {
                 down(e);
               },
               false
           );
-          td.addEventListener(
+          ttd.addEventListener(
               'mouseover',
               function (e) {
                 over(e);
               },
               false
           );
-          td.addEventListener(
+          ttd.addEventListener(
               'mouseup',
               function (e) {
                 up(e);
@@ -77,7 +80,7 @@ const TimeTable = () => {
               false
           );
 
-          td.addEventListener(
+          ttd.addEventListener(
               'dragstart',
               function (e) {
                 dragstart(e);
@@ -85,7 +88,7 @@ const TimeTable = () => {
               false
           );
 
-          tr.appendChild(td);
+          tr.appendChild(ttd);
         }
         table.appendChild(tr);
       }
@@ -125,7 +128,7 @@ const TimeTable = () => {
       btn.addEventListener("click", function (e) {
         let body = {
           email: ".",
-          timetable: {월: '', 화: '', 수: '', 목: '', 금: '', 토: '', 일: ''}
+          timetable: {}
         };
 
         const submit = async () => {
@@ -134,7 +137,7 @@ const TimeTable = () => {
             console.log(body.timetable);
             const submitResult = await axios.post('/api/time', body);
             console.log(submitResult);
-            window.location.href = "/timeresult";
+            //window.location.href = "/timeresult";
           } catch (e) {
             console.log(e);
           }
@@ -144,6 +147,8 @@ const TimeTable = () => {
 
         for (let j = 0; j < columnCnt; j++) {
           let keyname = theadArray[j];
+          body.timetable[keyname] = "";
+          console.log(keyname);
           for (let k = 0; k < rowCnt; k++) {
             let tdIndex = k * columnCnt + j;
             if (tdArray[tdIndex].style.backgroundColor == 'aqua')
@@ -162,42 +167,74 @@ const TimeTable = () => {
       <div id="ttwrap">
         <div id="tt1" style={{ display: 'inline-block', float: 'left' }}>
           <table>
+            <thead className="th">
+            </thead>
             <tbody>
               <tr>
-                <td></td>
+                <td className="td">10:00</td>
               </tr>
               <tr>
-                <td>10:00</td>
+                <td className="td"></td>
               </tr>
               <tr>
-                <td>11:00</td>
+                <td className="td">11:00</td>
               </tr>
               <tr>
-                <td>12:00</td>
+                <td className="td"></td>
               </tr>
               <tr>
-                <td>13:00</td>
+                <td className="td">12:00</td>
               </tr>
               <tr>
-                <td>14:00</td>
+                <td className="td"></td>
               </tr>
               <tr>
-                <td>15:00</td>
+                <td className="td">13:00</td>
               </tr>
               <tr>
-                <td>16:00</td>
+                <td className="td"></td>
               </tr>
               <tr>
-                <td>17:00</td>
+                <td className="td">14:00</td>
               </tr>
               <tr>
-                <td>18:00</td>
+                <td className="td"></td>
               </tr>
               <tr>
-                <td>19:00</td>
+                <td className="td">15:00</td>
               </tr>
               <tr>
-                <td>20:00</td>
+                <td className="td"></td>
+              </tr>
+              <tr>
+                <td className="td">16:00</td>
+              </tr>
+              <tr>
+                <td className="td"></td>
+              </tr>
+              <tr>
+                <td className="td">17:00</td>
+              </tr>
+              <tr>
+                <td className="td"></td>
+              </tr>
+              <tr>
+                <td className="td">18:00</td>
+              </tr>
+              <tr>
+                <td className="td"></td>
+              </tr>
+              <tr>
+                <td className="td">19:00</td>
+              </tr>
+              <tr>
+                <td className="td"></td>
+              </tr>
+              <tr>
+                <td className="td">20:00</td>
+              </tr>
+              <tr>
+                <td className="td"></td>
               </tr>
             </tbody>
           </table>
