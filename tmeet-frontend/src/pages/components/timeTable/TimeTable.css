@@ -4,21 +4,32 @@ table {
     padding-left: 10px;
 }
 
-td{
-    width: 50px;
-    height: 50px;
-    padding: 0px;
+.th{
+    height: 60px;
+    font-size: 15px;
 }
 
-th{
-    height: 40px;
-    border: 10px solid white;
+.tth{
+    height: 60px;
+    font-size: 16px;
+    padding: 0;
+    border: 0;
+}
+
+.td{
+    width: 60px;
+    height: 22px;
+    padding: 0px;
+    border: 5px solid white;
+    font-size: 15px;
 }
 
 .ttd{
     background-color: #dff7f1;
-    height: 40px;
-    border: 10px solid white;
+    width: 60px;
+    height: 22px;
+    padding: 0px;
+    border: 5px solid white;
 }
 
 #ttwrap{
