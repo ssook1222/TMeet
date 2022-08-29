@@ -5,7 +5,7 @@ import './TimeResult.css';
 import axios from "axios";
 
 function TimeResult() {
-    const rowCnt = 11;
+    const rowCnt = 22;
     let columnCnt = 0;
     const userCnt = 4;
     let theadArray = new Array();

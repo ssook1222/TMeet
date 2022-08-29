@@ -15,7 +15,7 @@ const TimeTable = () => {
     useEffect(()=> {
       const loadThead = async () => {
         await axios.get('/api/meeting',
-            {params: {meeting_id: 3}}
+            {params: {meeting_id: 5}}
         )
             .then(function (response) {
               console.log(JSON.parse(response.data));
@@ -137,7 +137,7 @@ const TimeTable = () => {
             console.log(body.timetable);
             const submitResult = await axios.post('/api/time', body);
             console.log(submitResult);
-            window.location.href = "/timeresult";
+            //window.location.href = "/timeresult";
           } catch (e) {
             console.log(e);
           }
