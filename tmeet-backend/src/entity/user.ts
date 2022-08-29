@@ -1,5 +1,14 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
 import {Meeting} from "./meeting";
+import {Time} from "./time"
 
 @Entity()
 export class User {
@@ -20,4 +29,7 @@ export class User {
 
     @ManyToOne(() => Meeting, meeting => meeting.meeting_id)
     meeting_id: Meeting;
+
+    @OneToMany(() => Time, time => time.time_id)
+    time_id: Time;
 }
