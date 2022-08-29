@@ -3,9 +3,7 @@ import React from "react";
 import KakaoShareButton from "../../components/KakaoShare/KakaoShare";
 import './Choice.css'
 import Box from "@mui/material/Box";
-import WeatherApp from "../../components/weather/Weather";
-import CommentApp from "../../components/comment/Comment";
-import weatherIcon from "../../components/weather/Weather";
+import WeatherIcon from "../../components/weather/WeatherRe.tsx";
 
 let count = 0;
 var weatherList =
@@ -69,7 +67,7 @@ function ChoiceApp() {
                          height : 'auto',
                          overflow : "scroll"
                      }}>
-                    <weatherIcon></weatherIcon>
+                    <WeatherIcon></WeatherIcon>
                 </Box>
             </div>
         </div>
@@ -79,8 +77,6 @@ function ChoiceApp() {
                 <KakaoShareButton></KakaoShareButton>
             </div>
             <div style={{backgroundColor : '#E3FDFD'}}>
-                {/*CommentApp 에러 수정 후 주석 해제*/}
-                {/*<CommentApp></CommentApp>*/}
             </div>
         </div>
         </body>

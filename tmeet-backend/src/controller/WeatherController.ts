@@ -4,7 +4,6 @@ import convert from "xml-js";
 export class WeatherController {
     static weatherLookRequest = async (req, res) => {
         const convert = require('xml-js');
-        var request = require('request');
 
         const ServiceKey = 'Xq5oy0Mz2YB%2BFTdgTXTkvqOdpa%2BVrjfvWO6ye34JKGucNegYdj1FTBSbCIvlm7tKb7Wggcxmw%2BLZ%2FbHVny333A%3D%3D';
         var snow = [];
@@ -155,7 +154,7 @@ export class WeatherController {
         weatherArr4 = weatherArr3.flat();
 
         console.log(weatherArr4);
-        res.send(weatherArr4);
+        res.header("Access-Control-Allow-Origin", "*").send(weatherArr4);
     }
 }
 
