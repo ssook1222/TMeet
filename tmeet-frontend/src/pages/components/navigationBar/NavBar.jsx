@@ -15,9 +15,9 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {Link} from "@mui/material";
 
-const pages = ['로그인', '시간정하기', '장소정하기', '모임확인'];
-const link =['/login','/time','/place-main','/meeting-choice'];
-const index = [0,1,2,3];
+const pages = ['로그인', '모임생성', '모임확인'];
+const link =['/login','/meeting-make-main','/meeting-choice'];
+const index = [0,1,2];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -42,7 +42,11 @@ const NavBar = () => {
         <AppBar position="static" style={{backgroundColor:"#71C9CE"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />*/}
+                    <img
+                        style={{width:"30px", height:"30px", marginRight:"10px"}}
+                        sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
+                        src='img/tmeet-logo.jpg'/>
                     <Typography
                         variant="h6"
                         noWrap
@@ -98,7 +102,7 @@ const NavBar = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    {/*<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />*/}
                     <Typography
                         variant="h5"
                         noWrap
