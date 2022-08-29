@@ -18,6 +18,6 @@ export class User {
     @Column({length: 15})
     subway: string;
 
-    @ManyToOne(type => Meeting, meeting => meeting.meeting_id)
+    @ManyToOne(() => Meeting, meeting => meeting.meeting_id)
     meeting_id: Meeting;
 }
