@@ -22,5 +22,6 @@ routes.post('/subway',SubwayController.findSubway);
 routes.get('/subway-time/:start/:goal',SubwayController.subwayTime);
 
 routes.get('/weather',WeatherController.weatherLookRequest);
+routes.post('/meeting-people',MeetingController.addPeople);
 
 export default routes;

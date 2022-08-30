@@ -39,6 +39,7 @@ export default function MeetingSecond() {
             if(nickname.includes(res.data.nickname)==false){
                 new_user_nickname.push(res.data.nickname)
                 new_user.push(res.data)
+                console.log(res.data)
             }
 
             else if(nickname.includes(res.data.nickname)==true){
