@@ -30,7 +30,11 @@ export class Comment {
     meeting_id: Meeting;
 
     @ManyToOne(() => User, user => user.id)
-    user_id: User;
+    user_array: User[];
+
+    // @ManyToOne(type => Board, board => board.comments, {onDelete: 'CASCADE', onUpdate: "CASCADE"})
+    // board: Board;
+    //{onDelete: 'CASCADE', onUpdate: "CASCADE"} 확인
 
     //Comment - User: many to one
     //User - Comment: one to many
