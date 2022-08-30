@@ -1,7 +1,7 @@
 import {
     Column,
     CreateDateColumn,
-    Entity,
+    Entity, JoinTable, ManyToMany,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
@@ -27,8 +27,9 @@ export class User {
     @Column({length: 15})
     subway: string;
 
-    @ManyToOne(() => Meeting, meeting => meeting.meeting_id)
-    meeting_id: Meeting;
+    @ManyToMany(() => Meeting)
+    @JoinTable()
+    meeting_array: Meeting[];
 
     @OneToMany(() => Time, time => time.time_id)
     time_id: Time;
