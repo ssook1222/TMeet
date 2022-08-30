@@ -15,10 +15,10 @@ import SubwayMain from "./pages/place/SubwayMain";
 import MapTest from "./pages/sample/MapSample"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
 import MeetingChoice from "./pages/meetingCheck/meetingChoice/MeetingChoice";
-import MeetingMake from "./pages/meetingMake/MeetingMake";
 
-import Checkout from "./pages/sample/MeetingSample/Checkout";
-
+{/*comment 페이지 작성 후 삭제*/}
+import Comment from "./pages/components/comment/Comment"
+import Weather from "./pages/components/weather/Weather"
 
 function App() {
   return (
@@ -41,8 +41,10 @@ function App() {
           <Route exact path="/meeting-check" element={<MeetingCheck />}></Route>
           <Route exact path="/meeting-choice" element={<MeetingChoice />}></Route>
 
-          <Route exact path="/meeting-test" element={<Checkout />}></Route>
-          <Route exact path="/meeting-make-main" element={<MeetingMake />}></Route>
+          {/*weather 페이지 작성 후 삭제*/}
+          <Route exact path="/comment" element={<Comment />}></Route>
+          <Route exact path="/weather" element={<Weather />}></Route>
+
         </Route>
       </Routes>
     </BrowserRouter>
