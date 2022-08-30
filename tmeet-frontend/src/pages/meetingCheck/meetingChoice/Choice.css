@@ -26,3 +26,8 @@
     height: 5vh;
     font-family: 'Noto Sans KR', sans-serif;
 }
+
+.weatherBox::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+}
