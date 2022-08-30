@@ -13,5 +13,5 @@ export class Time{
     timetable: string[];
 
     @ManyToOne(() => User, user => user.id)
-    user_array: User[];
+    user: User;
 }
