@@ -1,4 +1,4 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 import {User} from "./user";
 
 @Entity()
@@ -12,6 +12,6 @@ export class Time{
     @Column('simple-array')
     timetable: string[];
 
-    @ManyToOne(() => User, user => user.id)
+    @OneToOne(() => User, user => user.id)
     user: User;
 }
