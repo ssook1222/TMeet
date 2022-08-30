@@ -32,7 +32,7 @@ export class MeetingController {
         await getConnection().createQueryBuilder()
             .update(User)
             .where({id: id})
-            .set({ meeting_id: () => req.body.meeting_id })
+            .set({ meeting_array: () => req.body.meeting_id })
             .execute();
         res.status(200).send()
     }

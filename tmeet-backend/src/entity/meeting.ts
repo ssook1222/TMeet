@@ -1,4 +1,4 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {User} from "./user";
 
 @Entity()
@@ -15,6 +15,7 @@ export class Meeting{
     @Column('simple-array')
     thead: string[];
 
-    @OneToMany(() => User, user => user.id)
+    @ManyToMany(() => User)
+    @JoinTable()
     user_array: User[];
 }
