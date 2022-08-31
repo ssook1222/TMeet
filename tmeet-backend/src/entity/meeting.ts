@@ -20,6 +20,6 @@ export class Meeting{
     @JoinTable()
     user_array: User[];
 
-    @OneToMany(type => Comment, comment => comment.meeting)
+    @OneToMany(() => Comment, comment => comment.meeting)
     comments: Comment[];
 }
