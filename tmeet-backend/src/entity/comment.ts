@@ -23,12 +23,6 @@ export class Comment {
     @UpdateDateColumn()
     updated: Date;
 
-    @ManyToOne(() => Meeting, meeting => meeting.meeting_id)
-    meeting_id: Meeting;
-
-    @ManyToOne(() => User, user => user.id)
-    user_id: User;
-
     @ManyToOne(() => User, user => user.comments)
     user: User;
 
