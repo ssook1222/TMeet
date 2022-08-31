@@ -35,6 +35,6 @@ export class User {
     @OneToMany(() => Time, time => time.time_id)
     time_id: Time;
 
-    @OneToMany(type => Comment, comment => comment.user)
+    @OneToMany(() => Comment, comment => comment.user)
     comments: Comment[];
 }
