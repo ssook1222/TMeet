@@ -3,6 +3,7 @@ import {Time} from "../entity/time";
 import {User} from "../entity/user"
 import {Meeting} from "../entity/meeting"
 
+
 export class MeetingController {
 
     static addMeeting = async (req, res) => {
