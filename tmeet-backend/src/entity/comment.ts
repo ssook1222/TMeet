@@ -7,7 +7,10 @@ import {
     UpdateDateColumn
 } from "typeorm";
 import {Meeting} from "./meeting";
-import {User} from "./user";
+import {User} from "./User";
+
+//타입ORM 관계설정
+//(meeting_ID, User_id) <-> comment 각각 one to many 관계
 
 @Entity()
 export class Comment {
@@ -27,11 +30,16 @@ export class Comment {
     meeting_id: Meeting;
 
     @ManyToOne(() => User, user => user.id)
-    user_id: User;
+    user_array: User[];
 
-    @ManyToOne(() => User, user => user.comments)
-    user: User;
+    // @ManyToOne(type => Board, board => board.comments, {onDelete: 'CASCADE', onUpdate: "CASCADE"})
+    // board: Board;
+    //{onDelete: 'CASCADE', onUpdate: "CASCADE"} 확인
 
-    @ManyToOne(() => Meeting, meeting => meeting.comments)
-    meeting: Meeting;
+    //Comment - User: many to one
+    //User - Comment: one to many
+
+    //Comment - Meeting: many to one
+    //Meeting - Comment: one to many
+
 }
