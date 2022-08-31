@@ -16,6 +16,16 @@ export class Meeting{
     thead: string[];
 
     @ManyToMany(() => User)
-    @JoinTable()
-    user_array: User[];
+    @JoinTable({
+        name: "meeting_user", // table name for the junction table of this relation
+        joinColumn: {
+            name: "meeting_array",
+            referencedColumnName: "meeting_id"
+        },
+        inverseJoinColumn: {
+            name: "user_array",
+            referencedColumnName: "id"
+        }
+    })
+    user: User[];
 }

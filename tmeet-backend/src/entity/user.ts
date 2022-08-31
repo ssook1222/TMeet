@@ -28,8 +28,18 @@ export class User {
     subway: string;
 
     @ManyToMany(() => Meeting)
-    @JoinTable()
-    meeting_array: Meeting[];
+    @JoinTable({
+        name: "user_meeting", // table name for the junction table of this relation
+        joinColumn: {
+            name: "id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "meeting_array",
+            referencedColumnName: "meeting_id"
+        }
+    })
+    meeting: Meeting[];
 
     @OneToMany(() => Time, time => time.time_id)
     time_id: Time;
