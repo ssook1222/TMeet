@@ -1,5 +1,6 @@
 import {Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {User} from "./user";
+import {Comment} from  "./comment"
 
 @Entity()
 export class Meeting{
@@ -18,4 +19,7 @@ export class Meeting{
     @ManyToMany(() => User)
     @JoinTable()
     user_array: User[];
+
+    @OneToMany(() => Comment, comment => comment.meeting)
+    comments: Comment[];
 }
