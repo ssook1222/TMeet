@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import {Meeting} from "./meeting";
 import {Time} from "./time"
+import {Comment} from  "./comment"
 
 @Entity()
 export class User {
@@ -43,4 +44,7 @@ export class User {
 
     @OneToMany(() => Time, time => time.time_id)
     time_id: Time;
+
+    @OneToMany(() => Comment, comment => comment.user)
+    comments: Comment[];
 }
