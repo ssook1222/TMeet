@@ -9,7 +9,11 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import WbCloudyIcon from '@mui/icons-material/WbCloudy';
 
-function WeatherIcon() {
+interface Props {
+    meeting_id: string;
+}
+
+function WeatherIcon(props) {
 
     const [weatherList, setWeatherList] = useState<Array<Weather>>([]);
 
@@ -21,8 +25,10 @@ function WeatherIcon() {
 
     const findData = async () => {
 
-        const res1 = await axios.get('http://localhost:5000/api/weather-short/3');
-        const res2 = await axios.get('http://localhost:5000/api/weather-medium/3');
+        let meeitng_id = props.meeting_id;
+
+        const res1 = await axios.get(`http://localhost:5000/api/weather-short/${meeitng_id}`);
+        const res2 = await axios.get(`http://localhost:5000/api/weather-medium/${meeitng_id}`);
         const resWeather = [];
         resWeather.push(...res1.data, ...res2.data);
         console.log(resWeather)
@@ -76,7 +82,7 @@ function WeatherIcon() {
                             &&
                             <Typography>{weatherList[index].weather}</Typography>
                         }
-                        <div style={{marginLeft: "6vh"}}></div>
+                        <div style={{marginLeft: "5rem"}}></div>
                     </p>
                 </Grid>
             ))}

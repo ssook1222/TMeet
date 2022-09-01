@@ -346,19 +346,19 @@ export class WeatherController {
                         var regex = /[^0-9]/g;
                         var result = findNum.replace(regex, "");
                         if ((Object.keys(xmlToJson.response.body.items.item)[i].toString() == "wf" + result + "Am")) {
-                            if (isDate >= 3) {
+                            if (isDate >= 3 && isDate < 4) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf3Am._text.toString();
-                            } else if (isDate >= 4) {
+                            } else if (isDate >= 4 && isDate < 5) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf4Am._text.toString();
-                            } else if (isDate >= 5) {
+                            } else if (isDate >= 5 && isDate < 6) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf5Am._text.toString();
-                            } else if (isDate >= 6) {
+                            } else if (isDate >= 6 && isDate < 7) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf6Am._text.toString();
-                            } else if (isDate >= 7) {
+                            } else if (isDate >= 7 && isDate < 8) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf7Am._text.toString();
-                            } else if (isDate >= 8) {
+                            } else if (isDate >= 8 && isDate < 9) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf8._text.toString();
-                            } else if (isDate >= 9) {
+                            } else if (isDate >= 9 && isDate < 10) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf9._text.toString();
                             } else if (isDate >= 10) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf10._text.toString();
