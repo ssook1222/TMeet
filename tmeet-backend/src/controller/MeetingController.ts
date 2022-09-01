@@ -77,6 +77,6 @@ export class MeetingController {
                 })
                 .execute()
         }
-        res.status(200).send("success")
+        res.status(200).send(lookupResult)
     }
 }
