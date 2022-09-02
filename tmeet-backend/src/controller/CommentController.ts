@@ -5,44 +5,33 @@ import {User} from "../entity/user";
 
 export class CommentController {
     static addComment = async (req, res) => {
-        const {board_id, content, user_id} = req.body;
+        const {meeting_id, content, user_id} = req.body;
 
-        //meeting, user 관계설정
-        // const meeting = await getConnection().getRepository(Meeting).findOne({id: meeting_id});
-        // const user = await getConnection().getRepository(User).findOne({id: id});
+        const meeting = await getConnection().getRepository(Meeting).findOneBy({meeting_id: meeting_id});
+        const user = await getConnection().getRepository(User).findOneBy({id: user_id});
 
         const comment = new Comment();
         comment.content = content;
-        //관계설정 해결 후
-        // comment.meeting = meeting;
-        // comment.user = user;
+        comment.meeting = meeting;
         await getConnection().getRepository(Comment).save(comment);
 
         res.send(comment);
     }
 
+    static findAllComment = async (req, res) => {
+        const {meeting_id} = req.query;
 
-    // static findAllComment = async (req, res) => {
-    //     const {board_id} = req.query;
-    //
-    //     const result = await getConnection().getRepository(Comment).createQueryBuilder('comment')
-    //         .innerJoinAndSelect('comment.board', 'board')
-    //         .innerJoinAndSelect('comment.user', 'user')
-    //         .where('board.id=:board_id', {board_id})
-    //         .getMany()
-    //     console.log(result);
-    //     res.send(result);
-    //
-    //     // const boards = await getConnection().getRepository(Comment).find({ where: { board_id: board_id } });
-    //     /*    const board = await getConnection().getRepository(Board)
-    //           .findOne({relations: ["comments"], where: {id: board_id}, order: {id: 'DESC'}});
-    //         res.send(board.comments);*/
-    // }
-    //
+        // const boards = await getConnection().getRepository(Comment).find({ where: { board_id: board_id } });
+        const meeting = await getConnection().getRepository(Meeting)
+            .findOne({relations: ["comments"], where: {meeting_id: meeting_id}, order: {meeting_id: 'DESC'}});
+
+        res.send(meeting.comments);
+    }
+
     // static findOneComment = async (req, res) => {
     //     const {id} = req.query;
     //
-    //     const comment = await getConnection().getRepository(Comment).findOne({id});
+    //     const comment = await getConnection().getRepository(Comment).findOneBy({id});
     //     console.log(comment);
     //     res.send(comment);
     // }
