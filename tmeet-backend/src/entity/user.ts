@@ -8,8 +8,8 @@ import {
     UpdateDateColumn
 } from "typeorm";
 import {Meeting} from "./meeting";
-import {Time} from "./time";
-import {Comment} from "./comment"
+import {Time} from "./time"
+import {Comment} from  "./comment"
 
 @Entity()
 export class User {
@@ -29,12 +29,22 @@ export class User {
     subway: string;
 
     @ManyToMany(() => Meeting)
-    @JoinTable()
-    meeting_array: Meeting[];
+    @JoinTable({
+        name: "user_meeting", // table name for the junction table of this relation
+        joinColumn: {
+            name: "id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "meeting_array",
+            referencedColumnName: "meeting_id"
+        }
+    })
+    meeting: Meeting[];
 
     @OneToMany(() => Time, time => time.time_id)
     time_id: Time;
 
-    @OneToMany(type => Comment, comment => comment.user)
+    @OneToMany(() => Comment, comment => comment.user)
     comments: Comment[];
 }
