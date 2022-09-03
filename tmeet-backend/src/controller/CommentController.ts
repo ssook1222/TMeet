@@ -1,4 +1,4 @@
-import {Comment} from "../entity/Comment";
+import {Comment} from "../entity/comment";
 import {getConnection} from "typeorm";
 import {Meeting} from "../entity/meeting";
 import {User} from "../entity/user";
@@ -13,6 +13,7 @@ export class CommentController {
         const comment = new Comment();
         comment.content = content;
         comment.meeting = meeting;
+        comment.user = user;
         await getConnection().getRepository(Comment).save(comment);
 
         res.send(comment);
