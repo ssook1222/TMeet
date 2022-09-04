@@ -26,7 +26,7 @@ routes.get('/weather',WeatherController.weatherLookRequest);
 routes.post('/meeting-people',MeetingController.addPeople);
 
 routes.post('/comment', CommentController.addComment);
-routes.get('/comments', CommentController.findAllComment);
+routes.get('/comments/:meeting_id', CommentController.findAllComment);
 // routes.get('/comment', CommentController.findOneComment);
 // routes.put('/comment', CommentController.modifyComment);
 // routes.delete('/comment', CommentController.removeComment);
