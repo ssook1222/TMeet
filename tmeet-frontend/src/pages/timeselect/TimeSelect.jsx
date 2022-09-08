@@ -1,13 +1,12 @@
 import React from 'react';
 import './TimeSelect.css';
-import NavBar from '../components/navigationBar/NavBar';
+//import NavBar from '../components/navigationBar/NavBar';
 import axios from "axios";
 
 function TimeSelect() {
   return (
     <div>
       <div className="App">
-        <NavBar></NavBar>
       </div>
       <h3>정기적 모임/비정기적 모임 여부와 원하는 요일/날짜를 선택해주세요</h3>
       <div className="select">
