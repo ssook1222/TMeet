@@ -1,7 +1,7 @@
 import {
     Column,
     CreateDateColumn,
-    Entity,
+    Entity, JoinTable, ManyToMany,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import {Meeting} from "./meeting";
 import {Time} from "./time"
+import {Comment} from  "./comment"
 
 @Entity()
 export class User {
@@ -27,9 +28,23 @@ export class User {
     @Column({length: 15})
     subway: string;
 
-    @ManyToOne(() => Meeting, meeting => meeting.meeting_id)
-    meeting_id: Meeting;
+    @ManyToMany(() => Meeting)
+    @JoinTable({
+        name: "user_meeting", // table name for the junction table of this relation
+        joinColumn: {
+            name: "id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "meeting_array",
+            referencedColumnName: "meeting_id"
+        }
+    })
+    meeting: Meeting[];
 
     @OneToMany(() => Time, time => time.time_id)
     time_id: Time;
+
+    @OneToMany(() => Comment, comment => comment.user)
+    comments: Comment[];
 }

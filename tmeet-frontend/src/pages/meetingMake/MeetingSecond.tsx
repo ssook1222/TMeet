@@ -39,6 +39,8 @@ export default function MeetingSecond() {
             if(nickname.includes(res.data.nickname)==false){
                 new_user_nickname.push(res.data.nickname)
                 new_user.push(res.data)
+                console.log(res.data)
+                //세션 스토리지에 저장해 놓고, 미팅 id가 새로 부여될 때 DB에 저장하기
             }
 
             else if(nickname.includes(res.data.nickname)==true){

@@ -56,9 +56,10 @@ const SubwayMain = () => {
                             )
                         })
                     });
+                }
                 initMap()
                 findTime()
-            }}catch (e){
+            }catch (e){
                 console.log(e);
             }
         }
