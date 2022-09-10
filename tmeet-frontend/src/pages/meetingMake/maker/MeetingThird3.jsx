@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import TimeResult from "../timeresult/TimeResult";
+import TimeResult from "../../timeresult/TimeResult";
 
 
 

@@ -2,9 +2,9 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import {useEffect, useState} from "react";
 import axios from "axios";
-import NavBar from "../components/navigationBar/NavBar";
+import NavBar from "../../components/navigationBar/NavBar";
 import SubwayRecommend from "./place/SubwayRecommend.tsx";
-import SearchList from "../place/SearchList.tsx";
+import SearchList from "../../place/SearchList.tsx";
 
 export default function Review() {
 
