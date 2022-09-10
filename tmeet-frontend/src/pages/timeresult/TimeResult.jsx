@@ -4,7 +4,7 @@ import TimeTableMerge from '../components/timeTableMerge/TimeTableMerge';
 import './TimeResult.css';
 import axios from "axios";
 
-function TimeResult() {
+const TimeResult = () => {
     const rowCnt = 22;
     let columnCnt = 0;
     const userCnt = 4;
@@ -165,15 +165,14 @@ function TimeResult() {
         return (
     <div>
       <div className="App">
-        <NavBar></NavBar>
       </div>
-        <h3 id="h3">사용자들의 가능한 시간대를 취합한 결과를 확인해보세요.</h3>
+        <h3 id="h3">사용자들의 가능한 시간대를 취합한 결과 확인하세요.</h3>
         <div id="content">
       <div className="wrap">
         <TimeTableMerge />
       </div>
       <div className="wrap" >
-          <button id="resultButton1" onClick={showAllResult}>전체 결과보기</button>
+          <button id="resultButton1" onClick={showAllResult}>전체 결과</button>
           <div id="buttonwrap2">
               <button id="resultButton2" onClick={showUserResult}>사용자별 결과</button>
           </div>
