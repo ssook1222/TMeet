@@ -13,18 +13,24 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import MeetingSecond from "./MeetingSecond.tsx";
-import MeetingThird from "./MeetingThird"
+import MeetingThird1 from "./MeetingThird1"
+import MeetingThird2 from "./MeetingThird2"
+import MeetingThird3 from "./MeetingThird3"
 import MeetingFourth from "./MeetingFourth"
 
-const steps = ['모임 참가자 선택', '모임 시간 선택', '모임 장소 추천'];
+const steps = ['모임 참가자 선택', '정기적/비정기적', '모임 시간 선택', '모임 시간 추천', '모임 장소 추천'];
 
 function getStepContent(step) {
     switch (step) {
         case 0:
             return <MeetingSecond />;
         case 1:
-            return <MeetingThird />;
+            return <MeetingThird1 />;
         case 2:
+            return <MeetingThird2 />;
+        case 3:
+            return <MeetingThird3 />;
+        case 4:
             return <MeetingFourth />;
         default:
             throw new Error('Unknown step');

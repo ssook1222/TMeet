@@ -15,3 +15,5 @@ export class Time{
     @OneToOne(() => User, user => user.id)
     user: User;
 }
+
+
