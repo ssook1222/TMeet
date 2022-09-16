@@ -97,14 +97,30 @@ export class MeetingController {
         user_repo.email = result.email
         user_repo.password = result.password
 
+        // const lookupResult = await getConnection()
+        //     .getRepository(User)
+        //     .createQueryBuilder("user")
+        //     .leftJoinAndSelect("user.meeting", "user_meeting")
+        //     .where('user.id = :id', {id: user_repo.id})
+        //     .getMany()
+
         const lookupResult = await getConnection()
             .getRepository(User)
             .createQueryBuilder("user")
             .leftJoinAndSelect("user.meeting", "user_meeting")
-            .where('user.id = :id', {id: user_repo.id})
-            .getMany()
+            .where('user.id = :id AND user.meeting = :meeting', {id: user_repo.id, meeting:user_repo.meeting})
+            .getOne()
 
-        res.status(200).send(lookupResult)
+        const lookupTest = await getConnection()
+            .getRepository(User)
+            .createQueryBuilder("user")
+            .leftJoinAndSelect("user.meeting", "user_meeting")
+            .getOne()
+
+
+        console.log(lookupResult)
+
+        res.status(200).send("test")
 
     }
 

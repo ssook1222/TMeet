@@ -14,18 +14,19 @@ function MeetingCheck() {
     let body;
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         body = {
-            id: 1, //실제로는 로그인 이후 세션 스토리지에서 id랑 함께 가져오기
+            id: 2, //실제로는 로그인 이후 세션 스토리지에서 id랑 함께 가져오기
             meeting_id:data.get("meeting_id")
         }
+        console.log(data.get("meeting_id"))
         const onSubmit = async () => {
             const res  = await axios.post('/api/meeting-people-lookup', body);
             if(res.data[0]!==undefined){
-                alert("참가자 인증이 완료되었습니다.");
+                alert("참가자 인증이 완료되었습니다. 다음 단계를 눌러 넘어가주세요.");
             }
+            console.log(res.data[0])
         }
         onSubmit();
     }
