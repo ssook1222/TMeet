@@ -24,6 +24,7 @@ routes.get('/subway-time/:start/:goal',SubwayController.subwayTime);
 
 routes.get('/weather',WeatherController.weatherLookRequest);
 routes.post('/meeting-people',MeetingController.addPeople);
+routes.get('/meeting-search', MeetingController.searchByMeetingid);
 
 routes.post('/comment', CommentController.addComment);
 routes.get('/comments/:meeting_id', CommentController.findAllComment);

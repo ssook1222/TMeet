@@ -79,4 +79,16 @@ export class MeetingController {
         }
         res.status(200).send(lookupResult)
     }
+
+    static searchByMeetingid = async(req, res) => {
+        const searchResult = await getConnection()
+            .getRepository("user_meeting")
+            .createQueryBuilder("user_meeting")
+            .where('meeting_array = :meeting_id', {meeting_id: req.query.meeting_id})
+            .execute()
+        console.log(searchResult);
+        res.status(200).send(searchResult);
+    }
 }
+
+

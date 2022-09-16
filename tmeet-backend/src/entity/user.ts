@@ -3,7 +3,7 @@ import {
     CreateDateColumn,
     Entity, JoinTable, ManyToMany,
     ManyToOne,
-    OneToMany,
+    OneToMany, OneToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from "typeorm";
@@ -42,7 +42,7 @@ export class User {
     })
     meeting: Meeting[];
 
-    @OneToMany(() => Time, time => time.time_id)
+    @OneToOne(() => Time, time => time.time_id)
     time_id: Time;
 
     @OneToMany(() => Comment, comment => comment.user)
