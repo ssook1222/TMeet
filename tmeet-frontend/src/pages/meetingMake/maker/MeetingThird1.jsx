@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
+import TimeSelect from "../../timeselect/TimeSelect";
 
-export default function meetingThird() {
+
+
+export default function meetingThird2() {
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-                모임시간 선택
-            </Typography>
+            <TimeSelect></TimeSelect>
         </React.Fragment>
     );
 }

@@ -15,7 +15,8 @@ import SubwayMain from "./pages/place/SubwayMain";
 import MapTest from "./pages/sample/MapSample"
 import MeetingCheck from "./pages/meetingCheck/MeetingCheck";
 import MeetingChoice from "./pages/meetingCheck/meetingChoice/MeetingChoice";
-import MeetingMake from "./pages/meetingMake/MeetingMake";
+import MeetingMaker from "./pages/meetingMake/maker/MeetingMaker";
+import MeetingParticipants from "./pages/meetingMake/participants/MeetingParticipants";
 
 import Checkout from "./pages/sample/MeetingSample/Checkout";
 
@@ -42,7 +43,9 @@ function App() {
           <Route exact path="/meeting-choice" element={<MeetingChoice />}></Route>
 
           <Route exact path="/meeting-test" element={<Checkout />}></Route>
-          <Route exact path="/meeting-make-main" element={<MeetingMake />}></Route>
+          <Route exact path="/meeting-make-maker" element={<MeetingMaker />}></Route>
+          <Route exact path="/meeting-make-participants" element={<MeetingParticipants />}></Route>
+
         </Route>
       </Routes>
     </BrowserRouter>

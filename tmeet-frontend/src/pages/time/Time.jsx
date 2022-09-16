@@ -7,7 +7,6 @@ function Time() {
   return (
     <div>
       <div className="App">
-        <NavBar></NavBar>
       </div>
 
       <div className="timeTable">
