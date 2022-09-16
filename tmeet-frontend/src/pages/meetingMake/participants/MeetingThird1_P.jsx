@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import TimeResult from "../timeresult/TimeResult";
+import TimeSelect from "../../timeselect/TimeSelect";
 
 
 
@@ -8,7 +8,7 @@ import TimeResult from "../timeresult/TimeResult";
 export default function meetingThird2() {
     return (
         <React.Fragment>
-            <TimeResult></TimeResult>
+            <TimeSelect></TimeSelect>
         </React.Fragment>
     );
 }

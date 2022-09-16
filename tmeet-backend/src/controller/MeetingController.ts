@@ -1,5 +1,7 @@
 import {getConnection, getRepository} from "typeorm";
 import {Time} from "../entity/time";
+import {QueryFailedError, TypeORMError} from "typeorm";
+import {QueryError} from "mysql2";
 import {User} from "../entity/user"
 import {Meeting} from "../entity/meeting"
 
@@ -51,6 +53,7 @@ export class MeetingController {
             .createQueryBuilder("user")
             .leftJoinAndSelect("user.meeting", "user_meeting")
             .where('user.id = :id', {id: user_repo.id})
+            .select('meeting_id')
             .getMany()
 
         if(lookupResult!==undefined){
@@ -80,15 +83,45 @@ export class MeetingController {
         res.status(200).send(lookupResult)
     }
 
-    static searchByMeetingid = async(req, res) => {
-        const searchResult = await getConnection()
-            .getRepository("user_meeting")
-            .createQueryBuilder("user_meeting")
-            .where('meeting_array = :meeting_id', {meeting_id: req.query.meeting_id})
-            .execute()
-        console.log(searchResult);
-        res.status(200).send(searchResult);
+    static lookupPeople = async (req, res) => {
+        const id = req.body.id;
+        const meeting_id = req.body.meeting_id;
+        const result = await getConnection().getRepository(User).findOne({where:{id}})
+
+        const user_repo = new User()
+
+        user_repo.meeting = meeting_id
+        user_repo.id = result.id
+        user_repo.nickname = result.nickname
+        user_repo.subway = result.subway
+        user_repo.email = result.email
+        user_repo.password = result.password
+
+        // const lookupResult = await getConnection()
+        //     .getRepository(User)
+        //     .createQueryBuilder("user")
+        //     .leftJoinAndSelect("user.meeting", "user_meeting")
+        //     .where('user.id = :id', {id: user_repo.id})
+        //     .getMany()
+
+        const lookupResult = await getConnection()
+            .getRepository(User)
+            .createQueryBuilder("user")
+            .leftJoinAndSelect("user.meeting", "user_meeting")
+            .where('user.id = :id AND user.meeting = :meeting', {id: user_repo.id, meeting:user_repo.meeting})
+            .getOne()
+
+        const lookupTest = await getConnection()
+            .getRepository(User)
+            .createQueryBuilder("user")
+            .leftJoinAndSelect("user.meeting", "user_meeting")
+            .getOne()
+
+
+        console.log(lookupResult)
+
+        res.status(200).send("test")
+
     }
+
 }
-
-

@@ -1,8 +1,8 @@
 import React from "react";
-import NavBar from "../components/navigationBar/NavBar";
-import MeetingFirst from "./MeetingFirst";
+import NavBar from "../../components/navigationBar/NavBar";
+import MeetingFirst from "./MeetingFirst_P";
 
-const MeetingMake = () => {
+const MeetingParticipants = () => {
     return(
         <div style={{backgroundColor:"#F8FFFF", paddingBottom:"5px"}}>
             <NavBar></NavBar>
@@ -11,4 +11,4 @@ const MeetingMake = () => {
     );
 }
 
-export default MeetingMake;
+export default MeetingParticipants;

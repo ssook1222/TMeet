@@ -1,5 +1,6 @@
 import {Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 import {User} from "./user";
+import {JoinColumn} from "typeorm/browser";
 
 @Entity()
 export class Time{
@@ -13,6 +14,7 @@ export class Time{
     timetable: string[];
 
     @OneToOne(() => User, user => user.id)
+    @JoinColumn()
     user: User;
 }
 

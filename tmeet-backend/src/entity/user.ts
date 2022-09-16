@@ -1,7 +1,7 @@
 import {
     Column,
     CreateDateColumn,
-    Entity, JoinTable, ManyToMany,
+    Entity, JoinColumn, JoinTable, ManyToMany,
     ManyToOne,
     OneToMany, OneToOne,
     PrimaryGeneratedColumn,
@@ -43,6 +43,7 @@ export class User {
     meeting: Meeting[];
 
     @OneToOne(() => Time, time => time.time_id)
+    @JoinColumn()
     time_id: Time;
 
     @OneToMany(() => Comment, comment => comment.user)
