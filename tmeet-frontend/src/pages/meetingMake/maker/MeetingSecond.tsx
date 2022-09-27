@@ -13,12 +13,8 @@ import Button from "@mui/material/Button";
 import {Chip} from "@mui/material";
 import Container from "@mui/material/Container";
 
-<<<<<<< HEAD
-export default function MeetingSecond_P() {
-=======
-export default function MeetingSecond() {
->>>>>>> d68936561e02397ba519ffefc167ef0aa93886e3
 
+export default function MeetingSecond() {
     const [nickname, setNickname] = useState<Array<User>>([]);
     const [user, setUser] = useState<Array<User>>([]);
 
@@ -51,16 +47,10 @@ export default function MeetingSecond() {
                 alert("이미 있는 닉네임입니다.")
             }
             //3. new_user를 setUser에 집어넣기
-<<<<<<< HEAD
-            setNickname(new_user_nickname)
-            setUser(new_user)
-=======
             setNickname(new_user_nickname);
             setUser(new_user);
             sessionStorage.setItem("user", JSON.stringify(new_user));
             sessionStorage.setItem("nickname", JSON.stringify(new_user_nickname));
-
->>>>>>> d68936561e02397ba519ffefc167ef0aa93886e3
         }
         onSubmit();
     }
