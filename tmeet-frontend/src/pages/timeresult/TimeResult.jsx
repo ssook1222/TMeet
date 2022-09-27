@@ -37,10 +37,27 @@ const TimeResult = () => {
 
     //가져온 json을 2차원 배열로 만들기
     async function loadTable() {
+        let idArray = new Array();
+        await axios.get('/api/meeting-search', {
+            params: {
+                meeting_id: 1
+            }
+        })
+            .then(function (response) {
+                for(let i=0; i < response.data.length; i++) {
+                    idArray[i] = response.data[i].user_meeting_id;
+                    console.log(idArray[i]);
+                }
+            })
+            .catch(() => {
+                console.log('fail');
+            })
+
+
         for (let i = 0; i < userCnt; i++) {
-            await axios.get('/api/time', {
+            await axios.get('/api/time', {  //여기서 search my meeting id
                 params: {
-                    time_id: i + 1
+                    time_id: i+1
                 }
             })
                 .then(function (response) {
