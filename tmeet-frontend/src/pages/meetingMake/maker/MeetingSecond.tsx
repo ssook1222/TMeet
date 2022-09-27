@@ -47,8 +47,11 @@ export default function MeetingSecond() {
                 alert("이미 있는 닉네임입니다.")
             }
             //3. new_user를 setUser에 집어넣기
-            setNickname(new_user_nickname)
-            setUser(new_user)
+            setNickname(new_user_nickname);
+            setUser(new_user);
+            sessionStorage.setItem("user", JSON.stringify(new_user));
+            sessionStorage.setItem("nickname", JSON.stringify(new_user_nickname));
+
         }
         onSubmit();
     }
