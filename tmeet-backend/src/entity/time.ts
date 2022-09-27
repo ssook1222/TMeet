@@ -1,6 +1,6 @@
 import {Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 import {User} from "./user";
-import {JoinColumn} from "typeorm/browser";
+import {JoinColumn} from "typeorm";
 
 @Entity()
 export class Time{

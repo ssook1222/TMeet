@@ -13,8 +13,8 @@ import Button from "@mui/material/Button";
 import {Chip} from "@mui/material";
 import Container from "@mui/material/Container";
 
-export default function MeetingSecond() {
 
+export default function MeetingSecond() {
     const [nickname, setNickname] = useState<Array<User>>([]);
     const [user, setUser] = useState<Array<User>>([]);
 
@@ -51,7 +51,6 @@ export default function MeetingSecond() {
             setUser(new_user);
             sessionStorage.setItem("user", JSON.stringify(new_user));
             sessionStorage.setItem("nickname", JSON.stringify(new_user_nickname));
-
         }
         onSubmit();
     }
