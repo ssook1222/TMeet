@@ -8,7 +8,7 @@ const SubwayMain = () => {
     const [lng, setLng] = useState(0.0)
     var start = '126.852912,37.574028'
     var goal
-    const [time, setTime] = useState("불러오는 중입니다.")
+    const [time, setTime] = useState(0)
     const [subway_name,setSubway_name] = useState("불러오는 중입니다...")
 
     useEffect(() => {
