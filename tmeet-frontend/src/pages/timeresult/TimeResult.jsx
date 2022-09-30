@@ -7,7 +7,7 @@ import axios from "axios";
 const TimeResult = () => {
     const rowCnt = 22;
     let columnCnt = 0;
-    const userCnt = 4;
+    const userCnt = 1;
     let theadArray = new Array();
 
     let user0 = new Array();
@@ -21,7 +21,7 @@ const TimeResult = () => {
     //meeting_id로 thead 가져오기
     async function loadThead(){
         await axios.get('/api/meeting',
-            {params: {meeting_id: 5}}
+            {params: {meeting_id: sessionStorage.getItem("meeting_id")}}
         )
             .then(function (response) {
                 console.log(JSON.parse(response.data));

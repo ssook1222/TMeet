@@ -28,6 +28,7 @@ function MeetingCheck() {
             }
             console.log(res.data[0])
         }
+        sessionStorage.setItem("meeting_id", body.meeting_id);
         onSubmit();
     }
 

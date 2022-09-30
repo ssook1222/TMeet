@@ -11,7 +11,6 @@ h3{
 .select{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #F4FDFD;
     margin: 0% 20% 5% 20%;
 }
 
