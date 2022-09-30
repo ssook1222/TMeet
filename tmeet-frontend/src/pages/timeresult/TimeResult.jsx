@@ -7,7 +7,7 @@ import axios from "axios";
 const TimeResult = () => {
     const rowCnt = 22;
     let columnCnt = 0;
-    const userCnt = 4;
+    const userCnt = 1;
     let theadArray = new Array();
 
     let user0 = new Array();
@@ -21,7 +21,7 @@ const TimeResult = () => {
     //meeting_id로 thead 가져오기
     async function loadThead(){
         await axios.get('/api/meeting',
-            {params: {meeting_id: 5}}
+            {params: {meeting_id: sessionStorage.getItem("meeting_id")}}
         )
             .then(function (response) {
                 console.log(JSON.parse(response.data));
@@ -37,10 +37,27 @@ const TimeResult = () => {
 
     //가져온 json을 2차원 배열로 만들기
     async function loadTable() {
+        let idArray = new Array();
+        await axios.get('/api/meeting-search', {
+            params: {
+                meeting_id: 1
+            }
+        })
+            .then(function (response) {
+                for(let i=0; i < response.data.length; i++) {
+                    idArray[i] = response.data[i].user_meeting_id;
+                    console.log(idArray[i]);
+                }
+            })
+            .catch(() => {
+                console.log('fail');
+            })
+
+
         for (let i = 0; i < userCnt; i++) {
-            await axios.get('/api/time', {
+            await axios.get('/api/time', {  //여기서 search my meeting id
                 params: {
-                    time_id: i + 1
+                    time_id: i+1
                 }
             })
                 .then(function (response) {

@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import {useState} from "react";
-import User from "../../dto/User";
+import User from "../../../dto/User";
 import axios from "axios";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -13,8 +13,8 @@ import Button from "@mui/material/Button";
 import {Chip} from "@mui/material";
 import Container from "@mui/material/Container";
 
-export default function MeetingSecond() {
 
+export default function MeetingSecond() {
     const [nickname, setNickname] = useState<Array<User>>([]);
     const [user, setUser] = useState<Array<User>>([]);
 
@@ -39,14 +39,18 @@ export default function MeetingSecond() {
             if(nickname.includes(res.data.nickname)==false){
                 new_user_nickname.push(res.data.nickname)
                 new_user.push(res.data)
+                console.log(res.data)
+                //세션 스토리지에 저장해 놓고, 미팅 id가 새로 부여될 때 DB에 저장하기
             }
 
             else if(nickname.includes(res.data.nickname)==true){
                 alert("이미 있는 닉네임입니다.")
             }
             //3. new_user를 setUser에 집어넣기
-            setNickname(new_user_nickname)
-            setUser(new_user)
+            setNickname(new_user_nickname);
+            setUser(new_user);
+            sessionStorage.setItem("user", JSON.stringify(new_user));
+            sessionStorage.setItem("nickname", JSON.stringify(new_user_nickname));
         }
         onSubmit();
     }

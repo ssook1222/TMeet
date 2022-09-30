@@ -1,5 +1,6 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {User} from "./user";
+import {Comment} from "./comment";
 
 @Entity()
 export class Meeting{
@@ -15,6 +16,20 @@ export class Meeting{
     @Column('simple-array')
     thead: string[];
 
-    @OneToMany(() => User, user => user.id)
-    user_array: User[];
+    @ManyToMany(() => User)
+    @JoinTable({
+        name: "meeting_user", // table name for the junction table of this relation
+        joinColumn: {
+            name: "meeting_array",
+            referencedColumnName: "meeting_id"
+        },
+        inverseJoinColumn: {
+            name: "user_array",
+            referencedColumnName: "id"
+        }
+    })
+    user: User[];
+
+    @OneToMany(() => Comment, comment => comment.meeting)
+    comments: Comment[];
 }
