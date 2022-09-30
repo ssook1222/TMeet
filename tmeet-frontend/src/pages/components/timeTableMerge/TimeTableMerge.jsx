@@ -12,7 +12,7 @@ function TimeTable() {
         useEffect(()=> {
             const loadThead = async () => {
                 await axios.get('/api/meeting',
-                    {params: {meeting_id: 5}}
+                    {params: {meeting_id: sessionStorage.getItem("meeting_id")}}
                 )
                     .then(function (response) {
                         console.log(JSON.parse(response.data));
