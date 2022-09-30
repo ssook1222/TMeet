@@ -4,30 +4,9 @@ import KakaoShareButton from "../../components/KakaoShare/KakaoShare";
 import './Choice.css'
 import Box from "@mui/material/Box";
 import WeatherIcon from "../../components/weather/WeatherRe.tsx";
+import CommentList from "../../components/comment/Comment.tsx";
 
-let count = 0;
-var weatherList =
-    [
-        { date: '20220815', weather: '', rain: '강수없음', snow: '적설없음' },
-        { date: '20220816', weather: '', rain: '강수없음', snow: '적설없음' },
-        { date: '20220817', weather: '', rain: '강수없음', snow: '적설없음' },
-        { date: '20220818', weather: '구름많음', rain: '', snow: '' },
-        { date: '20220819', weather: '흐리고 비', rain: '', snow: '' },
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    ];
-
-for(let i = 0;i<weatherList.length ; i++){
-    if(weatherList[i].date == null){
-        count++;
-    }
-}
-
-let select = "모임 날짜 및 시간", startdate1 = weatherList[0].date, enddate1 = weatherList[count-2].date;
+let select = "모임 날짜 및 시간", startdate1 = "0901", enddate1 = "0901";
 
 function ChoiceApp() {
     return (
@@ -76,8 +55,10 @@ function ChoiceApp() {
                 결정된 모임을 카카오톡으로 공유하기
                 <KakaoShareButton></KakaoShareButton>
             </div>
-            <div style={{backgroundColor : '#E3FDFD'}}>
+            <div>
+                <CommentList></CommentList>
             </div>
+
         </div>
         </body>
     );
