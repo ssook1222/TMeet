@@ -16,8 +16,9 @@ export class MeetingController {
         meeting.is_regular = is_regular;
         meeting.thead = thead;
         const result = await getConnection().getRepository(Meeting).save(meeting);
+        console.log(result);
 
-        res.status(200).send({check: "저장되었습니다."});
+        res.status(200).send(result);  //result.meeting_id하면 에러남
     }
 
     static loadThead = async (req, res) => {
