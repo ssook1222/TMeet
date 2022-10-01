@@ -4,11 +4,12 @@ import {getConnection} from "typeorm";
 export class TimeController{
 
     static addTime = async (req, res) => {
-        const {email, timetable} = req.body;
+        const {email, timetable, user_id} = req.body;
 
         const time = new Time();
         time.email = email;
         time.timetable = timetable;
+        time.user = user_id;
 
         const result = await getConnection().getRepository(Time).save(time);
 

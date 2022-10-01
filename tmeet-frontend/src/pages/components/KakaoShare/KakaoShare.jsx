@@ -21,8 +21,8 @@ const KakaoShareButton = () => {
                 container: '#kakao-link-btn',
                 objectType: 'feed',
                 content: {
-                    title: '모임 날짜 및 시간',
-                    description: 'YYYY-MM-DD AM/PM 00:00 ~ YYYY-MM-DD AM/PM 00:00',
+                    title: '결정된 모임 날짜',
+                    description: "22.10.12 (수), 22.10.14 (금), 22.10.17 (월)",
                     imageUrl: 'IMAGE_URL', // i.e. process.env.FETCH_URL + '/logo.png'
                     link: {
                         mobileWebUrl: window.location.href,

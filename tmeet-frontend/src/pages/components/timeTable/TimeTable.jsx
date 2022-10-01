@@ -127,12 +127,21 @@ const TimeTable = () => {
       btn.innerHTML = "확인";
       btn.addEventListener("click", function (e) {
         let body = {
-          email: ".",
+          user_id: "",
+          email: sessionStorage.getItem("email"),
           timetable: {}
         };
 
+        let emailBody = {
+          email: sessionStorage.getItem('email')
+        }
+
         const submit = async () => {
           try {
+            const idByEmail = await axios.post('/api/return-id', emailBody);
+            body.user_id = idByEmail.data.id;
+            console.log(emailBody.email);
+            console.log(body.user_id);
             body.timetable = JSON.stringify(body.timetable);
             console.log(body.timetable);
             const submitResult = await axios.post('/api/time', body);
@@ -143,6 +152,7 @@ const TimeTable = () => {
           }
         }
 
+        //body 세팅
         let tdArray = document.getElementsByClassName('ttd');
 
         for (let j = 0; j < columnCnt; j++) {
@@ -157,6 +167,8 @@ const TimeTable = () => {
               body.timetable[keyname] += "0.";
           }
         }
+
+
         submit();
       });
       document.getElementById("ttwrap").appendChild(btn);

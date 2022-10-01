@@ -15,9 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import {Link} from "@mui/material";
 
-const pages = ['로그인', '모임생성(생성자)','모임생성(참가자)', '모임확인'];
-const link =['/login','/meeting-make-maker','/meeting-make-participants','/meeting-choice'];
-const index = [0,1,2];
+const pages = ['로그인', '모임생성(생성자)','모임생성(참가자)'];
+const link =['/login','/meeting-make-maker','/meeting-make-participants'];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);

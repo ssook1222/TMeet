@@ -4,29 +4,11 @@ import './MeetingCheck.css';
 import Box from "@mui/material/Box";
 import WeatherIcon from "../components/weather/WeatherRe.tsx";
 
-let count = 0;
-var weatherList =
-    [
-        { date: '20220815', weather: '', rain: '강수없음', snow: '적설없음' },
-        { date: '20220816', weather: '', rain: '강수없음', snow: '적설없음' },
-        { date: '20220817', weather: '', rain: '강수없음', snow: '적설없음' },
-        { date: '20220818', weather: '구름많음', rain: '', snow: '' },
-        { date: '20220819', weather: '흐리고 비', rain: '', snow: '' },
-        {},
-        {},
-        {},
-        {},
-        {},
-        {}
-    ];
-
-for(let i = 0;i<weatherList.length ; i++){
-    if(weatherList[i].date == null){
-        count++;
-    }
-}
-
-let select = "모임 날짜 및 시간", startdate1 = weatherList[0].date, enddate1 = weatherList[count-2].date;
+let meeting_select = [
+    ["모임 날짜", "22.10.05 (수)", "22.10.07 (금)", "22.10.10 (월)", 31],
+    ["모임 날짜", "22.10.12 (수)", "22.10.14 (금)", "22.10.17 (월)", 32],
+    ["모임 날짜", "22.10.19 (수)", "22.10.21 (금)", "22.10.24 (월)", 33],
+]
 
 function CheckApp() {
     
@@ -63,10 +45,16 @@ function CheckApp() {
                                 alignItems: 'center',
                                 backgroundColor : '#E3FDFD',
                                 color : '#46B3B9',
-                                width : '40vh',
-                                height : '15vh'
+                                width : '38vh',
+                                height : '15vh',
+                                border: "10px solid #E3FDFD"
                             }}>
-                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br> ~ {enddate1}</h4>
+                            <div style={{margin: "auto", display: "block", textAlign: "center"}}>
+                                <h4 style={{margin: "auto"}}>{meeting_select[0][0]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[0][1]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[0][2]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[0][3]}</h4>
+                            </div>
                         </Box>
                         <div style={{margin : "0.5vh"}}></div>
                         <Box className="weatherBox"
@@ -75,11 +63,14 @@ function CheckApp() {
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 backgroundColor : '#E3FDFD',
-                                width : '40vh',
+                                width : '38vh',
                                 height : 'auto',
-                                overflow : "scroll"
+                                overflow : "scroll",
+                                border: "10px solid #E3FDFD"
                             }}>
-                            <WeatherIcon></WeatherIcon>
+                            <p style={{color: "#46B3B9", margin: "0"}}>모임 기간 날씨</p>
+                            <p style={{color: "#46B3B9", margin: "0", fontSize: "0.8rem", borderBottom: "3px solid #ffffff", width: "40vh", textAlign: "center"}}>오늘로부터 10일 이후 날씨는 조회할 수 없습니다.</p>
+                            <WeatherIcon meeting_id={meeting_select[0][4]}></WeatherIcon>
                         </Box>
                     </div>
                 </div>
@@ -100,10 +91,16 @@ function CheckApp() {
                                 alignItems: 'center',
                                 backgroundColor : '#E3FDFD',
                                 color : '#46B3B9',
-                                width : '40vh',
-                                height : '15vh'
+                                width : '38vh',
+                                height : '15vh',
+                                border: "10px solid #E3FDFD"
                             }}>
-                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br> ~ {enddate1}</h4>
+                            <div style={{margin: "auto", display: "block", textAlign: "center"}}>
+                                <h4 style={{margin: "auto"}}>{meeting_select[1][0]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[1][1]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[1][2]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[1][3]}</h4>
+                            </div>
                         </Box>
                         <div style={{margin : "0.5vh"}}></div>
                         <Box className="weatherBox"
@@ -112,11 +109,14 @@ function CheckApp() {
                                  flexDirection: 'column',
                                  alignItems: 'center',
                                  backgroundColor : '#E3FDFD',
-                                 width : '40vh',
+                                 width : '38vh',
                                  height : 'auto',
-                                 overflow : "scroll"
+                                 overflow : "scroll",
+                                 border: "10px solid #E3FDFD"
                              }}>
-                            <WeatherIcon></WeatherIcon>
+                            <p style={{color: "#46B3B9", margin: "0"}}>모임 기간 날씨</p>
+                            <p style={{color: "#46B3B9", margin: "0", fontSize: "0.8rem", borderBottom: "3px solid #ffffff", width: "40vh", textAlign: "center"}}>오늘로부터 10일 이후 날씨는 조회할 수 없습니다.</p>
+                            <WeatherIcon meeting_id={meeting_select[1][4]}></WeatherIcon>
                         </Box>
                     </div>
                 </div>
@@ -137,10 +137,16 @@ function CheckApp() {
                                 alignItems: 'center',
                                 backgroundColor : '#E3FDFD',
                                 color : '#46B3B9',
-                                width : '40vh',
-                                height : '15vh'
+                                width : '38vh',
+                                height : '15vh',
+                                border: "10px solid #E3FDFD"
                             }}>
-                            <h4 style={{margin : "auto"}}>{select}<br></br>{startdate1}<br></br> ~ {enddate1}</h4>
+                            <div style={{margin: "auto", display: "block", textAlign: "center"}}>
+                                <h4 style={{margin: "auto"}}>{meeting_select[2][0]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[2][1]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[2][2]}</h4>
+                                <h4 style={{margin: "auto"}}>{meeting_select[2][3]}</h4>
+                            </div>
                         </Box>
                         <div style={{margin : "0.5vh"}}></div>
                         <Box className="weatherBox"
@@ -149,11 +155,14 @@ function CheckApp() {
                                  flexDirection: 'column',
                                  alignItems: 'center',
                                  backgroundColor : '#E3FDFD',
-                                 width : '40vh',
+                                 width : '38vh',
                                  height : 'auto',
-                                 overflow : "scroll"
+                                 overflow : "scroll",
+                                 border: "10px solid #E3FDFD"
                              }}>
-                            <WeatherIcon></WeatherIcon>
+                            <p style={{color: "#46B3B9", margin: "0"}}>모임 기간 날씨</p>
+                            <p style={{color: "#46B3B9", margin: "0", fontSize: "0.8rem", borderBottom: "3px solid #ffffff", width: "40vh", textAlign: "center"}}>오늘로부터 10일 이후 날씨는 조회할 수 없습니다.</p>
+                            <WeatherIcon meeting_id={meeting_select[2][4]}></WeatherIcon>
                         </Box>
                     </div>
                 </div>

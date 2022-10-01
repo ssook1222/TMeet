@@ -16,48 +16,56 @@ export class CommentController {
         comment.user = user;
         await getConnection().getRepository(Comment).save(comment);
 
-        res.send(comment);
+        res.header("Access-Control-Allow-Origin", "*").send(comment);
     }
+    //body_raw_json
+    //{
+    // "comtent" : "",
+    // "meeting_id" : 1,
+    // "user_id : 2
+    // }
+
 
     static findAllComment = async (req, res) => {
-        const {meeting_id} = req.query;
+        const meeting_id = req.params.meeting_id;
 
-        // const boards = await getConnection().getRepository(Comment).find({ where: { board_id: board_id } });
-        const meeting = await getConnection().getRepository(Meeting)
-            .findOne({relations: ["comments"], where: {meeting_id: meeting_id}, order: {meeting_id: 'DESC'}});
+        // //user nickname 표시 안됨
+        // const meeting = await getConnection().getRepository(Meeting)
+        //     .findOne({relations: ["comments"], where: {meeting_id: meeting_id}});
+        //
+        // res.send(meeting.comments);
 
-        res.send(meeting.comments);
+        //전체 댓글을 가져옴(미팅별 댓글 불가)
+        const result = await getConnection().getRepository(Comment).createQueryBuilder('comment')
+            .innerJoinAndSelect('comment.meeting', 'meeting')
+            .innerJoinAndSelect('comment.user', 'user')
+            .getMany()
+
+        res.header("Access-Control-Allow-Origin", "*").send(result);
+
+        //  //where절 에러
+        // const result = await getConnection().getRepository(Comment).createQueryBuilder('comment')
+        //     .innerJoinAndSelect('comment.meeting', 'meeting')
+        //     .innerJoinAndSelect('comment.user', 'user')
+        //     .where('meeitng.id=:meeting_id', {meeting_id})
+        //     .getMany()
+        //
+        // res.header("Access-Control-Allow-Origin", "*").send(result);
+
     }
 
-    // static findOneComment = async (req, res) => {
-    //     const {id} = req.query;
-    //
-    //     const comment = await getConnection().getRepository(Comment).findOneBy({id});
-    //     console.log(comment);
-    //     res.send(comment);
-    // }
-    //
-    // static modifyComment = async (req, res) => {
-    //     const {id, content} = req.body;
-    //
-    //     const result = await getConnection().createQueryBuilder().update(Comment)
-    //         .set({content})
-    //         .where("id = :id", {id})
-    //         .execute();
-    //
-    //     res.send(result);
-    // }
-    //
-    // static removeComment = async (req, res) => {
-    //     const {id} = req.query;
-    //
-    //     const result = await getConnection()
-    //         .createQueryBuilder()
-    //         .delete()
-    //         .from(Comment)
-    //         .where("id = :id", {id})
-    //         .execute();
-    //
-    //     res.send(result);
-    // }
+    static removeComment = async (req, res) => {
+        const id = req.params.id;
+
+        const result = await getConnection()
+            .createQueryBuilder()
+            .delete()
+            .from(Comment)
+            .where("id = :id", {id})
+            .execute();
+
+        res.send(result);
+    }
+
+
 }
