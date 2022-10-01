@@ -125,4 +125,17 @@ export class MeetingController {
 
     }
 
+    static searchByMeetingid = async(req, res) => {
+        const meeting_id = req.query.meeting_id;
+        console.log(meeting_id);
+
+        const searchResult = await getConnection()
+            .getRepository("user_meeting")
+            .createQueryBuilder("user_meeting")
+            .where('meeting_id = :meeting_id', {meeting_id: meeting_id})
+            .getOne()
+        console.log(searchResult);
+
+        res.status(200).send(searchResult)
+    }
 }

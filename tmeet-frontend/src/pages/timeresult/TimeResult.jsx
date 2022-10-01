@@ -7,7 +7,7 @@ import axios from "axios";
 const TimeResult = () => {
     const rowCnt = 22;
     let columnCnt = 0;
-    const userCnt = 1;
+    const userCnt = 3;
     let theadArray = new Array();
 
     let user0 = new Array();
@@ -40,10 +40,11 @@ const TimeResult = () => {
         let idArray = new Array();
         await axios.get('/api/meeting-search', {
             params: {
-                meeting_id: 1
+                meeting_id: sessionStorage.getItem("meeting_id")
             }
         })
             .then(function (response) {
+                console.log(response);
                 for(let i=0; i < response.data.length; i++) {
                     idArray[i] = response.data[i].user_meeting_id;
                     console.log(idArray[i]);
@@ -52,7 +53,6 @@ const TimeResult = () => {
             .catch(() => {
                 console.log('fail');
             })
-
 
         for (let i = 0; i < userCnt; i++) {
             await axios.get('/api/time', {  //여기서 search my meeting id

@@ -36,7 +36,7 @@ export class User {
             referencedColumnName: "id"
         },
         inverseJoinColumn: {
-            name: "meeting_array",
+            name: "meeting_id",
             referencedColumnName: "meeting_id"
         }
     })
