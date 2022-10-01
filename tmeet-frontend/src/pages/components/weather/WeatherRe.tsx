@@ -25,7 +25,7 @@ function WeatherIcon(props) {
 
     const findData = async () => {
 
-        let meeitng_id = props.meeting_id;
+ let meeitng_id = props.meeting_id;
 
         const res1 = await axios.get(`http://localhost:5000/api/weather-short/${meeitng_id}`);
         const res2 = await axios.get(`http://localhost:5000/api/weather-medium/${meeitng_id}`);

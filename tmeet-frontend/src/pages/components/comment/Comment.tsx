@@ -67,7 +67,7 @@ const CommentList: React.FC = () => {
             {
                 comments.map((comment: Comment) =>
                     <div style={{marginTop: "0.8rem"}}>
-                        <Row className="comment" key={comment.id} style={{margin: "auto", width: "90%", justifyContent: "center"}}>
+<Row className="comment" key={comment.id} style={{margin: "auto", width: "90%", justifyContent: "center"}}>
                             <div style={{
                                 display: "flex",
                                 justifyContent: "space-between",

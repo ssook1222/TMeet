@@ -346,6 +346,7 @@ export class WeatherController {
                         var regex = /[^0-9]/g;
                         var result = findNum.replace(regex, "");
                         if ((Object.keys(xmlToJson.response.body.items.item)[i].toString() == "wf" + result + "Am")) {
+
                             if (isDate >= 3 && isDate < 4) {
                                 weatherAm[j] = xmlToJson.response.body.items.item.wf3Am._text.toString();
                             } else if (isDate >= 4 && isDate < 5) {

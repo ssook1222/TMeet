@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import WeatherIcon from "../../components/weather/WeatherRe.tsx";
 import CommentList from "../../components/comment/Comment.tsx";
 
-
 let meeting_select = [
     ["모임 날짜", "22.10.05 (수)", "22.10.07 (금)", "22.10.10 (월)", 31],
     ["모임 날짜", "22.10.12 (수)", "22.10.14 (금)", "22.10.17 (월)", 32],

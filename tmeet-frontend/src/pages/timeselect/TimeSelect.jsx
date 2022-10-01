@@ -33,7 +33,9 @@ function TimeSelect() {
         body1.thead = JSON.stringify(body1.thead);
         console.log(body1.thead);
         const submitResult = await axios.post('/api/meeting', body1);
-        console.log(submitResult);
+        console.log(submitResult.data);
+        alert("미팅 아이디:" + submitResult.data.meeting_id);
+        sessionStorage.setItem("meeting_id", submitResult.data.meeting_id)
       }
       catch (e) {
         console.log(e);
@@ -75,16 +77,16 @@ function TimeSelect() {
       }
     }
 
-    let user = JSON.parse(sessionStorage.getItem("user"));
-    console.log(user);
-    for(let i=0; i < user.length; i++){
-      body2.id = user[i].id;
-      body2.meeting_id = meeting_id;
-      console.log(body2.id);
-      console.log(body2.meeting_id);
-    }
+    //let user = JSON.parse(sessionStorage.getItem("user"));
+    //console.log(user);
+    // for(let i=0; i < user.length; i++){
+    //   body2.id = user[i].id;
+    //   body2.meeting_id = meeting_id;
+    //   console.log(body2.id);
+    //   console.log(body2.meeting_id);
+    // }
     submitMeeting();
-    submitMeetingUser();
+    //submitMeetingUser();
 
   }
 
