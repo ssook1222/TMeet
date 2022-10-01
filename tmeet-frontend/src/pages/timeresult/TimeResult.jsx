@@ -8,6 +8,8 @@ const TimeResult = () => {
     const rowCnt = 22;
     let columnCnt = 0;
     const userCnt = 3;
+    const userCnt = 1;
+
     let theadArray = new Array();
 
     let user0 = new Array();

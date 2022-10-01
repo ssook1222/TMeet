@@ -63,14 +63,9 @@ export default function MeetingFirst() {
                     <React.Fragment>
                         {activeStep === steps.length ? (
                             <React.Fragment>
-                                <Typography variant="h5" gutterBottom>
-                                    모임생성이 완료되었습니다.
-                                </Typography>
-                                <hr/>
-                                <Typography variant="subtitle1">
-                                    최종적으로 선택된 모임을 확인하려면 <br/>
-                                    우측 상단의 '모임확인'을 눌러주세요.
-                                </Typography>
+                                {
+                                    window.location.href="/meeting-choice"
+                                }
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
@@ -88,7 +83,7 @@ export default function MeetingFirst() {
                                         sx={{ mt: 3, ml: 1 }}
                                         style={{color:"white", backgroundColor:"#6ec2c6"}}
                                     >
-                                        {activeStep === steps.length - 1 ? '모임 생성하기' : '다음 단계로'}
+                                        {activeStep === steps.length - 1 ? '모임 확인하기' : '다음 단계로'}
                                     </Button>
                                 </Box>
                             </React.Fragment>
