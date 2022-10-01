@@ -67,22 +67,26 @@ const CommentList: React.FC = () => {
             {
                 comments.map((comment: Comment) =>
                     <div style={{marginTop: "0.8rem"}}>
-                        <Row className="comment" key={comment.id} style={{margin: "auto", width: "90%"}}>
+<Row className="comment" key={comment.id} style={{margin: "auto", width: "90%", justifyContent: "center"}}>
                             <div style={{
                                 display: "flex",
                                 justifyContent: "space-between",
-                                borderBottom: "1px solid #dddddd",
-                                fontSize: "0.8rem"
+                                // borderBottom: "1px solid #dddddd",
+                                fontSize: "0.8rem",
+                                width: "90%"
                             }}>
                                 <span className="date">{comment.user.nickname}</span>
                                 <span className="date">{comment.created}</span>
                             </div>
-                            <Col xs={12}>{comment.content}</Col>
+                            <Col xs={12} style={{display: "flex"}}>{comment.content}</Col>
                         </Row>
+                        <div style={{borderBottom: "1px solid #dddddd", width: "90%", margin: "0.8rem"}}></div>
                     </div>
+
                 )
             }
-        </>
+        <div style={{margin: "2rem"}}></div>
+            </>
     );
 };
 
