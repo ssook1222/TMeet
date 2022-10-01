@@ -5,6 +5,8 @@ import {SubwayController} from "../controller/SubwayController";
 import {WeatherController} from "../controller/WeatherController";
 import {MeetingController} from "../controller/MeetingController";
 import {CommentController} from "../controller/CommentController";
+import {User} from "../entity/user";
+import {Meeting} from "../entity/meeting";
 
 const routes = Router();
 
@@ -25,6 +27,7 @@ routes.get('/subway-time/:start/:goal',SubwayController.subwayTime);
 routes.get('/find-nickname',UserController.findNickname);
 routes.post('/meeting-people',MeetingController.addPeople);
 routes.post('/meeting-people-lookup',MeetingController.lookupPeople);
+routes.get('/meeting-search', MeetingController.searchByMeetingid);
 
 routes.post('/comment', CommentController.addComment);
 routes.get('/comments/:meeting_id', CommentController.findAllComment);
