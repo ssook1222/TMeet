@@ -24,7 +24,7 @@
 
 |참여자|
 |------|
-|[SangEun123](https://github.com/SangEun123)|
+|[onebbu](https://github.com/onebbu)|
 |[ssook1222](https://github.com/ssook1222)|
 |[lucy1287](https://github.com/lucy1287)|
 
